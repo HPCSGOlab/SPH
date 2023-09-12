@@ -110,7 +110,7 @@ void start_simulation()
     #ifdef RASPI
     params.number_fluid_particles_global = 1500;
     #else
-    params.number_fluid_particles_global = 1500;
+    params.number_fluid_particles_global = 3000;
     #endif
 
     // Boundary box
@@ -247,16 +247,19 @@ void start_simulation()
     int *null_displs = NULL;
     MPI_Gatherv(&params.tunable_params, 1, TunableParamtype, null_tunable_param, null_recvcnts, null_displs, TunableParamtype, 0, MPI_COMM_WORLD);
 
+    
+    float *colors_by_rank = malloc(3*nprocs*sizeof(float));
+    MPI_Bcast(colors_by_rank, 3*nprocs, MPI_FLOAT, 0, MPI_COMM_WORLD);
     // Initialize RGB Light if present
     #if defined LIGHT || defined BLINK1
     rgb_light_t light_state;
-    float *colors_by_rank = malloc(3*nprocs*sizeof(float));
-    MPI_Bcast(colors_by_rank, 3*nprocs, MPI_FLOAT, 0, MPI_COMM_WORLD);
+
     init_rgb_light(&light_state, 255*colors_by_rank[3*rank], 255*colors_by_rank[3*rank+1], 255*colors_by_rank[3*rank+2]);
-    free(colors_by_rank);
+    
     // Without this pause the lights can sometimes change color too quickly the first time step
     sleep(1);
-    #endif    
+    #endif  
+    free(colors_by_rank);  
 
     fluid_particle *p;
     fluid_particle *null_particle = NULL;

@@ -1,6 +1,5 @@
 all:
 	mkdir -p bin
-	OS=linux make -C blink1-tool
 	make -C src/
 clean:
 	rm -f ./sph.out

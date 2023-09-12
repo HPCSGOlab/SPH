@@ -32,14 +32,14 @@ typedef struct OOB_T oob_t;
 #include "mpi.h"
 
 // MPI globals
-MPI_Datatype Particletype;
-MPI_Datatype TunableParamtype;
-MPI_Datatype LeftEdgetype;
-MPI_Datatype RightEdgetype;
-MPI_Comm MPI_COMM_COMPUTE;
-MPI_Group group_world;
-MPI_Group group_compute;
-MPI_Group group_render;
+extern MPI_Datatype Particletype;
+extern MPI_Datatype TunableParamtype;
+extern MPI_Datatype LeftEdgetype;
+extern MPI_Datatype RightEdgetype;
+extern MPI_Comm MPI_COMM_COMPUTE;
+extern MPI_Group group_world;
+extern MPI_Group group_compute;
+extern MPI_Group group_render;
 
 // Particles that are within 2*h distance of node edge
 struct EDGE_T {

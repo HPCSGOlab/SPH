@@ -28,6 +28,15 @@ THE SOFTWARE.
 #include "fluid.h"
 #include <stddef.h>
 
+MPI_Datatype Particletype;
+MPI_Datatype TunableParamtype;
+MPI_Datatype LeftEdgetype;
+MPI_Datatype RightEdgetype;
+MPI_Comm MPI_COMM_COMPUTE;
+MPI_Group group_world;
+MPI_Group group_compute;
+MPI_Group group_render;
+
 // Rank 0 is the render node, the rest are compute nodes
 // This will create appropriate MPI communicators
 void create_communicators()
