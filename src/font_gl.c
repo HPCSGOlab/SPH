@@ -270,7 +270,7 @@ int add_text_coords(font_t *state, char *text, text_vert_t* verts, float *color,
 	return n;
 }
 
-void render_all_text(font_t *state, render_t *render_state, double fps)
+void render_all_text(font_t *state, render_t *render_state, double fps, int particles)
 {
 	// Setup environment
 	glUseProgram(state->program);
@@ -316,6 +316,10 @@ void render_all_text(font_t *state, render_t *render_state, double fps)
 	// frames per second
 	sprintf( buffer, "FPS: %.0f", fps);
 	n += add_text_coords(state, buffer, verts + n, unselected_color, 1.0f - 100.0f * sx, 1.0f - 50.0f * sy, sx, sy);
+
+	// frames per second
+	sprintf( buffer, "Particles: %.0d", particles);
+	n += add_text_coords(state, buffer, verts + n, unselected_color, 1.0f - 300.0f * sx, 1.0f - 50.0f * sy, sx, sy);
 
 	// Gravity
 	sprintf( buffer, "Gravity: %.1f", gravity);

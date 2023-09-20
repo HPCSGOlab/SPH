@@ -110,7 +110,7 @@ void start_simulation()
     #ifdef RASPI
     params.number_fluid_particles_global = 1500;
     #else
-    params.number_fluid_particles_global = 3000;
+    params.number_fluid_particles_global = 5000;
     #endif
 
     // Boundary box
@@ -166,7 +166,7 @@ void start_simulation()
         world_dims[0] = boundary_global.max_x;
         world_dims[1] = boundary_global.max_y;
         MPI_Send(world_dims, 2, MPI_FLOAT, 0, 8, MPI_COMM_WORLD);
-	MPI_Send(&params.number_fluid_particles_global, 1, MPI_INT, 0, 9, MPI_COMM_WORLD);
+	    MPI_Send(&params.number_fluid_particles_global, 1, MPI_INT, 0, 9, MPI_COMM_WORLD);
     }
 
     // Neighbor grid setup
@@ -269,8 +269,51 @@ void start_simulation()
 
     int sub_step = 0; // substep range from 0 to < steps_per_frame
 
+    float scale_factor = .5f;
+
+    bool resize = true;
+
+    int step = 0;
+
     // Main simulation loop
     while(1) {
+
+        int goal_local_particles = (params.number_fluid_particles_global/nprocs) * scale_factor;
+
+        // if (goal_local_particles < params.number_fluid_particles_local ) {
+
+        //     //params.number_fluid_particles_local = params.number_fluid_particles_local - 1;
+        //     if (params.number_halo_particles > 10){
+        //         params.number_fluid_particles_local = params.number_fluid_particles_local - 1;
+        //     }
+            
+        // }else {
+        //     if (params.number_halo_particles > 10){
+        //         params.number_fluid_particles_local = params.number_fluid_particles_local + 1;
+        //         printf("add!!");
+        //         add_particle(fluid_particle_pointers, &params);
+        //     }
+            
+        // }
+
+        // if (resize){
+        //     params.number_fluid_particles_local = goal_local_particles;
+        //     resize = false;
+        // }
+        if (step == 200){
+            //params.max_fluid_particle_index = 16000;
+            //params.number_fluid_particles_local = 8000;
+            params.number_fluid_particles_local = goal_local_particles;
+        }
+
+        if (step == 300 && rank == (nprocs - 1) ){
+            //params.max_fluid_particle_index = 16000;
+            //params.number_fluid_particles_local = 8000;
+            //params.number_fluid_particles_local += 200;
+        }
+        step++;
+        
+        printf("rank: %d goal_local : %d f_index %d local %d halo: %d\n", rank,goal_local_particles, params.max_fluid_particle_index, params.number_fluid_particles_local,params.number_halo_particles);
 
         // Initialize velocities
         apply_gravity(fluid_particle_pointers, &params);
@@ -398,6 +441,28 @@ void start_simulation()
 }
 
 // This should go into the hash, perhaps with the viscocity?
+void add_particle(fluid_particle **fluid_particle_pointers, param *params)
+{
+    int i;
+    fluid_particle *p;
+    // float dt = params->tunable_params.time_step;
+    // float g = -params->tunable_params.g;
+
+    // p = fluid_particle_pointers[0];
+
+    // fluid_particle_pointers[params->number_fluid_particles_local] = p;
+    // params->number_fluid_particles_local = params->number_fluid_particles_local + 1;
+
+    // for(i=0; i<(params->number_fluid_particles_local + params->number_halo_particles); i++) {
+    //     p = fluid_particle_pointers[i];
+
+    //     if (p->v_y != NULL){
+    //         p->v_y = 0;
+    //     }
+
+    //  }
+}
+
 void apply_gravity(fluid_particle **fluid_particle_pointers, param *params)
 {
     int i;

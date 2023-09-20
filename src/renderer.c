@@ -220,15 +220,15 @@ int start_renderer()
     float particle_diameter_pixels = gl_state.screen_width * 0.0125;
     float liquid_particle_diameter_pixels = gl_state.screen_width * 0.020;
     #else
-    float particle_diameter_pixels = gl_state.screen_width * 0.0125;
+    float particle_diameter_pixels = gl_state.screen_width * 0.00750;
     float liquid_particle_diameter_pixels = gl_state.screen_width * 0.020;
     #endif
 
     MPI_Status status;
 
     // Remove all partitions but one initially
-//    for(i=0; i<render_state.num_compute_procs-1; i++)
-//        remove_partition(&render_state);
+    //    for(i=0; i<render_state.num_compute_procs-1; i++)
+    //        remove_partition(&render_state);
 
     while(1){
         // Every frames_per_fps steps calculate FPS
@@ -308,7 +308,7 @@ int start_renderer()
         mover_gl_dims[0] = render_state.master_params[0].mover_width/(render_state.sim_width*0.5f) - particle_diameter_pixels/(gl_state.screen_width*0.5f) ;
         mover_gl_dims[1] = render_state.master_params[0].mover_height/(render_state.sim_height*0.5f) - particle_diameter_pixels/(gl_state.screen_height*0.5f);
 
-        render_all_text(&font_state, &render_state, fps);
+        render_all_text(&font_state, &render_state, fps, coords_recvd);
 
         if(render_state.show_dividers)
         {

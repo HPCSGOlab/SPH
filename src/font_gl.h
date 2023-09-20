@@ -96,6 +96,6 @@ void init_font(font_t *state, int screen_width, int screen_height);
 void render_fps(font_t *state, float fps);
 void render_parameters(font_t *state, render_t *render_state);
 int add_text_coords(font_t *state, char *text, text_vert_t* verts, float *color, float x, float y, float sx, float sy);
-void render_all_text(font_t *state, render_t *render_state, double fps);
+void render_all_text(font_t *state, render_t *render_state, double fps, int particles);
 
 #endif
