@@ -308,7 +308,7 @@ int start_renderer()
         mover_gl_dims[0] = render_state.master_params[0].mover_width/(render_state.sim_width*0.5f) - particle_diameter_pixels/(gl_state.screen_width*0.5f) ;
         mover_gl_dims[1] = render_state.master_params[0].mover_height/(render_state.sim_height*0.5f) - particle_diameter_pixels/(gl_state.screen_height*0.5f);
 
-        render_all_text(&font_state, &render_state, fps, coords_recvd);
+        render_all_text(&font_state, &render_state, fps, coords_recvd/2);
 
         if(render_state.show_dividers)
         {

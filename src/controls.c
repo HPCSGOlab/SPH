@@ -86,6 +86,14 @@ void decrease_parameter(render_t *render_state)
 }
 
 // Increase gravity parameter
+void increase_points(render_t *render_state)
+{
+    //TDH
+    render_state->master_params[0].count_change = 100;
+
+}
+
+// Increase gravity parameter
 void increase_gravity(render_t *render_state)
 {
     static const float max_grav = -9.0f;

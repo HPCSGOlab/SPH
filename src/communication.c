@@ -91,7 +91,8 @@ void createMpiTypes()
     types[15] = MPI_CHAR;
     types[16] = MPI_CHAR;
     types[17] = MPI_CHAR;
-    for (i=0; i<18; i++) blocklens[i] = 1;
+    types[18] = MPI_INT;
+    for (i=0; i<19; i++) blocklens[i] = 1;
     // Get displacement of each struct member
     disps[0] = offsetof( tunable_parameters, rest_density );
     disps[1] = offsetof( tunable_parameters, smoothing_radius );
@@ -111,9 +112,10 @@ void createMpiTypes()
     disps[15] = offsetof( tunable_parameters, mover_type );
     disps[16] = offsetof( tunable_parameters, kill_sim );
     disps[17] = offsetof( tunable_parameters, active );
+    disps[18] = offsetof( tunable_parameters, count_change );
 
     // Commit type
-    MPI_Type_create_struct( 18, blocklens, disps, types, &TunableParamtype );
+    MPI_Type_create_struct( 19, blocklens, disps, types, &TunableParamtype );
     MPI_Type_commit( &TunableParamtype );
 }
 

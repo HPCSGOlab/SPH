@@ -94,6 +94,7 @@ struct TUNABLE_PARAMETERS {
     char mover_type;
     char kill_sim;
     char active;
+    int count_change;
 };
 
 // Full parameters struct for simulation

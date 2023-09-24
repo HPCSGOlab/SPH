@@ -280,37 +280,17 @@ void start_simulation()
 
         int goal_local_particles = (params.number_fluid_particles_global/nprocs) * scale_factor;
 
-        // if (goal_local_particles < params.number_fluid_particles_local ) {
-
-        //     //params.number_fluid_particles_local = params.number_fluid_particles_local - 1;
-        //     if (params.number_halo_particles > 10){
-        //         params.number_fluid_particles_local = params.number_fluid_particles_local - 1;
-        //     }
-            
-        // }else {
-        //     if (params.number_halo_particles > 10){
-        //         params.number_fluid_particles_local = params.number_fluid_particles_local + 1;
-        //         printf("add!!");
-        //         add_particle(fluid_particle_pointers, &params);
-        //     }
-            
-        // }
-
-        // if (resize){
-        //     params.number_fluid_particles_local = goal_local_particles;
-        //     resize = false;
-        // }
         if (step == 200){
             //params.max_fluid_particle_index = 16000;
             //params.number_fluid_particles_local = 8000;
             params.number_fluid_particles_local = goal_local_particles;
         }
 
-        if (step == 300 && rank == (nprocs - 1) ){
-            //params.max_fluid_particle_index = 16000;
-            //params.number_fluid_particles_local = 8000;
-            //params.number_fluid_particles_local += 200;
+        if (params.tunable_params.count_change > 0){
+            params.number_fluid_particles_local += params.tunable_params.count_change;
+            params.tunable_params.count_change = 0;
         }
+ 
         step++;
         
         printf("rank: %d goal_local : %d f_index %d local %d halo: %d\n", rank,goal_local_particles, params.max_fluid_particle_index, params.number_fluid_particles_local,params.number_halo_particles);
@@ -408,7 +388,11 @@ void start_simulation()
             }
             // Async send fluid particle coordinates to render node
             MPI_Isend(fluid_particle_coords, 2*params.number_fluid_particles_local, MPI_SHORT, 0, 17, MPI_COMM_WORLD, &coords_req);
+            
+
         }
+
+
 
         if(sub_step == steps_per_frame-1)
             sub_step = 0;
