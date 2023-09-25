@@ -1,3 +1,318 @@
+==67966== 
+==67969== Memcheck, a memory error detector
+==67969== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==67969== Using Valgrind-3.19.0 and LibVEX; rerun with -h for copyright info
+==67969== Command: ./bin/sph.out
+==67969== 
+hwloc x86 backend cannot work under Valgrind, disabling.
+May be reenabled by dumping CPUIDs with hwloc-gather-cpuid
+and reloading them under Valgrind with HWLOC_CPUID_PATH.
+hwloc x86 backend cannot work under Valgrind, disabling.
+May be reenabled by dumping CPUIDs with hwloc-gather-cpuid
+and reloading them under Valgrind with HWLOC_CPUID_PATH.
+hwloc x86 backend cannot work under Valgrind, disabling.
+May be reenabled by dumping CPUIDs with hwloc-gather-cpuid
+and reloading them under Valgrind with HWLOC_CPUID_PATH.
+hwloc x86 backend cannot work under Valgrind, disabling.
+May be reenabled by dumping CPUIDs with hwloc-gather-cpuid
+and reloading them under Valgrind with HWLOC_CPUID_PATH.
+==67967== WARNING: valgrind ignores shmget(shmflg) SHM_HUGETLB
+==67968== WARNING: valgrind ignores shmget(shmflg) SHM_HUGETLB
+==67966== WARNING: valgrind ignores shmget(shmflg) SHM_HUGETLB
+==67969== WARNING: valgrind ignores shmget(shmflg) SHM_HUGETLB
+compute rank: 0, num compute procs: 3 
+compute rank: 2, num compute procs: 3 
+compute rank: 1, num compute procs: 3 
+1:shader:
+
+2:shader:
+
+3:program:
+
+4:shader:
+
+5:shader:
+
+6:program:
+
+7:shader:
+
+8:shader:
+
+9:program:
+
+10:shader:
+
+11:shader:
+
+12:program:
+
+13:shader:
+
+14:program:
+
+15:shader:
+
+16:shader:
+
+17:program:
+
+18:shader:
+
+19:shader:
+
+20:program:
+
+21:shader:
+
+22:shader:
+
+23:program:
+
+Background image loaded: 600 x 800 pixels
+Screen resolution 1600, 900
+ul (-0.312500,0.666667), ur (0.312500, 0.666667), ll (-0.312500, -0.666667), lr (0.312500, -0.666667)
+24:shader:
+
+25:shader:
+
+26:program:
+
+27:shader:
+
+28:shader:
+
+29:program:
+
+loaded image: 1050x650
+loaded image: 1050x650
+30:shader:
+
+31:shader:
+
+32:program:
+
+loaded image: 1050x650
+loaded image: 1050x650
+33:shader:
+
+34:shader:
+
+35:program:
+
+loaded image: 1050x650
+loaded image: 1050x650
+36:shader:
+
+37:shader:
+
+38:program:
+
+loaded image: 600x800
+39:shader:
+
+40:shader:
+
+41:program:
+
+Rank 2 start_x: 10.023239, end_x :15.000000
+initial number of particles 1643
+Rank 0 start_x: 0.000000, end_x :4.932070
+Rank 1 start_x: 4.932070, end_x :10.023239
+initial number of particles 1696
+initial number of particles 1696
+smoothing radius: 0.318198
+smoothing radius: 0.318198
+smoothing radius: 0.318198
+grid x: 48 grid y 27
+bytes allocated: 824736
+grid x: 48 grid y 27
+bytes allocated: 824736
+rank 2 max fluid x: 14.955309
+grid x: 48 grid y 27
+Rank: 2, fluid_particles: 1642, smoothing radius: 0.318198 
+rank 1 max fluid x: 10.023239
+Rank: 1, fluid_particles: 1695, smoothing radius: 0.318198 
+bytes allocated: 824736
+rank 0 max fluid x: 4.932070
+Rank: 0, fluid_particles: 1695, smoothing radius: 0.318198 
+==67966== Invalid write of size 2
+==67966==    at 0x484DAC3: memmove (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==67966==    by 0x6E32617: ??? (in /usr/lib/x86_64-linux-gnu/libmpich.so.12.2.2)
+==67966==    by 0x4E1EA37: ??? (in /usr/lib/x86_64-linux-gnu/libmpich.so.12.2.2)
+==67966==    by 0x4E1E3B8: ??? (in /usr/lib/x86_64-linux-gnu/libmpich.so.12.2.2)
+==67966==    by 0x4E20903: ??? (in /usr/lib/x86_64-linux-gnu/libmpich.so.12.2.2)
+==67966==    by 0x6F048FF: ??? (in /usr/lib/x86_64-linux-gnu/libmpich.so.12.2.2)
+==67966==    by 0x4E1574A: ??? (in /usr/lib/x86_64-linux-gnu/libmpich.so.12.2.2)
+==67966==    by 0x78551C0: ucp_eager_only_handler (in /usr/lib/x86_64-linux-gnu/libucp.so.0.0.0)
+==67966==    by 0x79ACD6D: ??? (in /usr/lib/x86_64-linux-gnu/libuct.so.0.0.0)
+==67966==    by 0x7807AD9: ucp_worker_progress (in /usr/lib/x86_64-linux-gnu/libucp.so.0.0.0)
+==67966==    by 0x4DDCE27: ??? (in /usr/lib/x86_64-linux-gnu/libmpich.so.12.2.2)
+==67966==    by 0x4E11625: ??? (in /usr/lib/x86_64-linux-gnu/libmpich.so.12.2.2)
+==67966==  Address 0xb661820 is 0 bytes after a block of size 192 alloc'd
+==67966==    at 0x4843828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==67966==    by 0x127120: start_renderer (renderer.c:109)
+==67966==    by 0x10BCB9: main (fluid.c:63)
+==67966== 
+==67966== Invalid write of size 1
+==67966==    at 0x484D9E8: memmove (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==67966==    by 0x6E32617: ??? (in /usr/lib/x86_64-linux-gnu/libmpich.so.12.2.2)
+==67966==    by 0x4E1EA37: ??? (in /usr/lib/x86_64-linux-gnu/libmpich.so.12.2.2)
+==67966==    by 0x4E1E3B8: ??? (in /usr/lib/x86_64-linux-gnu/libmpich.so.12.2.2)
+==67966==    by 0x4E20903: ??? (in /usr/lib/x86_64-linux-gnu/libmpich.so.12.2.2)
+==67966==    by 0x6F048FF: ??? (in /usr/lib/x86_64-linux-gnu/libmpich.so.12.2.2)
+==67966==    by 0x4E1574A: ??? (in /usr/lib/x86_64-linux-gnu/libmpich.so.12.2.2)
+==67966==    by 0x78551C0: ucp_eager_only_handler (in /usr/lib/x86_64-linux-gnu/libucp.so.0.0.0)
+==67966==    by 0x79ACD6D: ??? (in /usr/lib/x86_64-linux-gnu/libuct.so.0.0.0)
+==67966==    by 0x7807AD9: ucp_worker_progress (in /usr/lib/x86_64-linux-gnu/libucp.so.0.0.0)
+==67966==    by 0x4DDCE27: ??? (in /usr/lib/x86_64-linux-gnu/libmpich.so.12.2.2)
+==67966==    by 0x4E11625: ??? (in /usr/lib/x86_64-linux-gnu/libmpich.so.12.2.2)
+==67966==  Address 0xb661824 is 4 bytes after a block of size 192 alloc'd
+==67966==    at 0x4843828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==67966==    by 0x127120: start_renderer (renderer.c:109)
+==67966==    by 0x10BCB9: main (fluid.c:63)
+==67966== 
+==67966== Invalid write of size 1
+==67966==    at 0x484DAF3: memmove (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==67966==    by 0x6E32617: ??? (in /usr/lib/x86_64-linux-gnu/libmpich.so.12.2.2)
+==67966==    by 0x4E1EA37: ??? (in /usr/lib/x86_64-linux-gnu/libmpich.so.12.2.2)
+==67966==    by 0x4E1E3B8: ??? (in /usr/lib/x86_64-linux-gnu/libmpich.so.12.2.2)
+==67966==    by 0x4E20903: ??? (in /usr/lib/x86_64-linux-gnu/libmpich.so.12.2.2)
+==67966==    by 0x6F048FF: ??? (in /usr/lib/x86_64-linux-gnu/libmpich.so.12.2.2)
+==67966==    by 0x4E1574A: ??? (in /usr/lib/x86_64-linux-gnu/libmpich.so.12.2.2)
+==67966==    by 0x78551C0: ucp_eager_only_handler (in /usr/lib/x86_64-linux-gnu/libucp.so.0.0.0)
+==67966==    by 0x79ACD6D: ??? (in /usr/lib/x86_64-linux-gnu/libuct.so.0.0.0)
+==67966==    by 0x7807AD9: ucp_worker_progress (in /usr/lib/x86_64-linux-gnu/libucp.so.0.0.0)
+==67966==    by 0x4DDCE27: ??? (in /usr/lib/x86_64-linux-gnu/libmpich.so.12.2.2)
+==67966==    by 0x4E11625: ??? (in /usr/lib/x86_64-linux-gnu/libmpich.so.12.2.2)
+==67966==  Address 0xb661828 is 8 bytes after a block of size 192 alloc'd
+==67966==    at 0x4843828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==67966==    by 0x127120: start_renderer (renderer.c:109)
+==67966==    by 0x10BCB9: main (fluid.c:63)
+==67966== 
+==67967== Conditional jump or move depends on uninitialised value(s)
+==67967==    at 0x73371F4: __printf_buffer (vfprintf-process-arg.c:58)
+==67967==    by 0x73389A8: __vfprintf_internal (vfprintf-internal.c:1474)
+==67967==    by 0x74050EA: __printf_chk (printf_chk.c:33)
+==67967==    by 0x12F56C: printf (stdio2.h:86)
+==67967==    by 0x12F56C: start_simulation (fluid.c:296)
+==67967==    by 0x10BCDD: main (fluid.c:65)
+==67967== 
+==67967== Use of uninitialised value of size 8
+==67967==    at 0x732D0EB: _itoa_word (_itoa.c:177)
+==67967==    by 0x7336F7A: __printf_buffer (vfprintf-process-arg.c:155)
+==67967==    by 0x73389A8: __vfprintf_internal (vfprintf-internal.c:1474)
+==67967==    by 0x74050EA: __printf_chk (printf_chk.c:33)
+==67967==    by 0x12F56C: printf (stdio2.h:86)
+==67967==    by 0x12F56C: start_simulation (fluid.c:296)
+==67967==    by 0x10BCDD: main (fluid.c:65)
+==67967== 
+==67967== Conditional jump or move depends on uninitialised value(s)
+==67967==    at 0x732D0FC: _itoa_word (_itoa.c:177)
+==67967==    by 0x7336F7A: __printf_buffer (vfprintf-process-arg.c:155)
+==67967==    by 0x73389A8: __vfprintf_internal (vfprintf-internal.c:1474)
+==67967==    by 0x74050EA: __printf_chk (printf_chk.c:33)
+==67967==    by 0x12F56C: printf (stdio2.h:86)
+==67967==    by 0x12F56C: start_simulation (fluid.c:296)
+==67967==    by 0x10BCDD: main (fluid.c:65)
+==67967== 
+==67967== Conditional jump or move depends on uninitialised value(s)
+==67967==    at 0x7336FCB: __printf_buffer (vfprintf-process-arg.c:186)
+==67967==    by 0x73389A8: __vfprintf_internal (vfprintf-internal.c:1474)
+==67968== Conditional jump or move depends on uninitialised value(s)
+==67969== Conditional jump or move depends on uninitialised value(s)
+==67967==    by 0x74050EA: __printf_chk (printf_chk.c:33)
+==67967==    by 0x12F56C: printf (stdio2.h:86)
+==67967==    by 0x12F56C: start_simulation (fluid.c:296)
+==67967==    by 0x10BCDD: main (fluid.c:65)
+==67967== 
+==67968==    at 0x73371F4: __printf_buffer (vfprintf-process-arg.c:58)
+==67968==    by 0x73389A8: __vfprintf_internal (vfprintf-internal.c:1474)
+==67969==    at 0x73371F4: __printf_buffer (vfprintf-process-arg.c:58)
+==67968==    by 0x74050EA: __printf_chk (printf_chk.c:33)
+==67969==    by 0x73389A8: __vfprintf_internal (vfprintf-internal.c:1474)
+rank: 0 goal_local : 282 f_index 0 local 6730 halo: 0
+==67968==    by 0x12F56C: printf (stdio2.h:86)
+==67969==    by 0x74050EA: __printf_chk (printf_chk.c:33)
+==67969==    by 0x12F56C: printf (stdio2.h:86)
+==67968==    by 0x12F56C: start_simulation (fluid.c:296)
+==67968==    by 0x10BCDD: main (fluid.c:65)
+==67969==    by 0x12F56C: start_simulation (fluid.c:296)
+==67968== 
+==67969==    by 0x10BCDD: main (fluid.c:65)
+==67969== 
+==67968== Use of uninitialised value of size 8
+==67968==    at 0x732D0EB: _itoa_word (_itoa.c:177)
+==67969== Use of uninitialised value of size 8
+==67969==    at 0x732D0EB: _itoa_word (_itoa.c:177)
+==67968==    by 0x7336F7A: __printf_buffer (vfprintf-process-arg.c:155)
+==67968==    by 0x73389A8: __vfprintf_internal (vfprintf-internal.c:1474)
+==67969==    by 0x7336F7A: __printf_buffer (vfprintf-process-arg.c:155)
+==67969==    by 0x73389A8: __vfprintf_internal (vfprintf-internal.c:1474)
+==67968==    by 0x74050EA: __printf_chk (printf_chk.c:33)
+==67968==    by 0x12F56C: printf (stdio2.h:86)
+==67969==    by 0x74050EA: __printf_chk (printf_chk.c:33)
+==67969==    by 0x12F56C: printf (stdio2.h:86)
+==67968==    by 0x12F56C: start_simulation (fluid.c:296)
+==67968==    by 0x10BCDD: main (fluid.c:65)
+==67968== 
+==67969==    by 0x12F56C: start_simulation (fluid.c:296)
+==67969==    by 0x10BCDD: main (fluid.c:65)
+==67969== 
+==67969== Conditional jump or move depends on uninitialised value(s)
+==67969==    at 0x732D0FC: _itoa_word (_itoa.c:177)
+==67969==    by 0x7336F7A: __printf_buffer (vfprintf-process-arg.c:155)
+==67969==    by 0x73389A8: __vfprintf_internal (vfprintf-internal.c:1474)
+==67969==    by 0x74050EA: __printf_chk (printf_chk.c:33)
+==67968== Conditional jump or move depends on uninitialised value(s)
+==67968==    at 0x732D0FC: _itoa_word (_itoa.c:177)
+==67968==    by 0x7336F7A: __printf_buffer (vfprintf-process-arg.c:155)
+==67969==    by 0x12F56C: printf (stdio2.h:86)
+==67969==    by 0x12F56C: start_simulation (fluid.c:296)
+==67968==    by 0x73389A8: __vfprintf_internal (vfprintf-internal.c:1474)
+==67968==    by 0x74050EA: __printf_chk (printf_chk.c:33)
+==67968==    by 0x12F56C: printf (stdio2.h:86)
+==67969==    by 0x10BCDD: main (fluid.c:65)
+==67969== 
+==67968==    by 0x12F56C: start_simulation (fluid.c:296)
+==67968==    by 0x10BCDD: main (fluid.c:65)
+==67968== 
+==67969== Conditional jump or move depends on uninitialised value(s)
+==67969==    at 0x7336FCB: __printf_buffer (vfprintf-process-arg.c:186)
+==67969==    by 0x73389A8: __vfprintf_internal (vfprintf-internal.c:1474)
+==67969==    by 0x74050EA: __printf_chk (printf_chk.c:33)
+==67968== Conditional jump or move depends on uninitialised value(s)
+==67969==    by 0x12F56C: printf (stdio2.h:86)
+==67969==    by 0x12F56C: start_simulation (fluid.c:296)
+==67968==    at 0x7336FCB: __printf_buffer (vfprintf-process-arg.c:186)
+==67968==    by 0x73389A8: __vfprintf_internal (vfprintf-internal.c:1474)
+==67968==    by 0x74050EA: __printf_chk (printf_chk.c:33)
+==67968==    by 0x12F56C: printf (stdio2.h:86)
+==67969==    by 0x10BCDD: main (fluid.c:65)
+==67969== 
+==67968==    by 0x12F56C: start_simulation (fluid.c:296)
+==67968==    by 0x10BCDD: main (fluid.c:65)
+==67968== 
+rank: 2 goal_local : 273 f_index 0 local 6677 halo: 0
+rank: 1 goal_local : 282 f_index 0 local 6730 halo: 0
+==67967== Invalid read of size 4
+==67967==    at 0x12F5AF: apply_gravity (fluid.c:459)
+==67967==    by 0x12F5AF: start_simulation (fluid.c:299)
+==67967==    by 0x10BCDD: main (fluid.c:65)
+==67967==  Address 0x14 is not stack'd, malloc'd or (recently) free'd
+==67967== 
+==67969== Invalid read of size 4
+==67969==    at 0x12F5AF: apply_gravity (fluid.c:459)
+==67969==    by 0x12F5AF: start_simulation (fluid.c:299)
+==67969==    by 0x10BCDD: main (fluid.c:65)
+==67969==  Address 0x14 is not stack'd, malloc'd or (recently) free'd
+==67969== 
+==67968== Invalid read of size 4
+==67968==    at 0x12F5AF: apply_gravity (fluid.c:459)
+==67968==    by 0x12F5AF: start_simulation (fluid.c:299)
+==67968==    by 0x10BCDD: main (fluid.c:65)
+==67968==  Address 0x14 is not stack'd, malloc'd or (recently) free'd
+==67968== 
 [thetrick-linux:67967:0:67967] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x14)
 [thetrick-linux:67969:0:67969] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x14)
 [thetrick-linux:67968:0:67968] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x14)
@@ -18,3 +333,178 @@
 ==67966==    at 0x4843828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
 ==67966==    by 0x127120: start_renderer (renderer.c:109)
 ==67966==    by 0x10BCB9: main (fluid.c:63)
+==67966== 
+==67966== Invalid read of size 1
+==67966==    at 0x484D9D9: memmove (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==67966==    by 0x6E3242F: ??? (in /usr/lib/x86_64-linux-gnu/libmpich.so.12.2.2)
+==67966==    by 0x4E1DFE7: ??? (in /usr/lib/x86_64-linux-gnu/libmpich.so.12.2.2)
+==67966==    by 0x4E1D8E8: ??? (in /usr/lib/x86_64-linux-gnu/libmpich.so.12.2.2)
+==67966==    by 0x4E1FD18: ??? (in /usr/lib/x86_64-linux-gnu/libmpich.so.12.2.2)
+==67966==    by 0x6F05021: ??? (in /usr/lib/x86_64-linux-gnu/libmpich.so.12.2.2)
+==67966==    by 0x4E13518: ??? (in /usr/lib/x86_64-linux-gnu/libmpich.so.12.2.2)
+==67966==    by 0x78191D4: ucp_dt_pack (in /usr/lib/x86_64-linux-gnu/libucp.so.0.0.0)
+==67966==    by 0x785B267: ??? (in /usr/lib/x86_64-linux-gnu/libucp.so.0.0.0)
+==67966==    by 0x79AE404: uct_mm_ep_am_bcopy (in /usr/lib/x86_64-linux-gnu/libuct.so.0.0.0)
+==67966==    by 0x78595FC: ??? (in /usr/lib/x86_64-linux-gnu/libucp.so.0.0.0)
+==67966==    by 0x78663B9: ucp_tag_send_nbx (in /usr/lib/x86_64-linux-gnu/libucp.so.0.0.0)
+==67966==  Address 0xb661824 is 4 bytes after a block of size 192 alloc'd
+==67966==    at 0x4843828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==67966==    by 0x127120: start_renderer (renderer.c:109)
+==67966==    by 0x10BCB9: main (fluid.c:63)
+==67966== 
+==67966== Invalid read of size 1
+==67966==    at 0x484DAF0: memmove (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==67966==    by 0x6E3242F: ??? (in /usr/lib/x86_64-linux-gnu/libmpich.so.12.2.2)
+==67966==    by 0x4E1DFE7: ??? (in /usr/lib/x86_64-linux-gnu/libmpich.so.12.2.2)
+==67966==    by 0x4E1D8E8: ??? (in /usr/lib/x86_64-linux-gnu/libmpich.so.12.2.2)
+==67966==    by 0x4E1FD18: ??? (in /usr/lib/x86_64-linux-gnu/libmpich.so.12.2.2)
+==67966==    by 0x6F05021: ??? (in /usr/lib/x86_64-linux-gnu/libmpich.so.12.2.2)
+==67966==    by 0x4E13518: ??? (in /usr/lib/x86_64-linux-gnu/libmpich.so.12.2.2)
+==67966==    by 0x78191D4: ucp_dt_pack (in /usr/lib/x86_64-linux-gnu/libucp.so.0.0.0)
+==67966==    by 0x785B267: ??? (in /usr/lib/x86_64-linux-gnu/libucp.so.0.0.0)
+==67966==    by 0x79AE404: uct_mm_ep_am_bcopy (in /usr/lib/x86_64-linux-gnu/libuct.so.0.0.0)
+==67966==    by 0x78595FC: ??? (in /usr/lib/x86_64-linux-gnu/libucp.so.0.0.0)
+==67966==    by 0x78663B9: ucp_tag_send_nbx (in /usr/lib/x86_64-linux-gnu/libucp.so.0.0.0)
+==67966==  Address 0xb661828 is 8 bytes after a block of size 192 alloc'd
+==67966==    at 0x4843828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==67966==    by 0x127120: start_renderer (renderer.c:109)
+==67966==    by 0x10BCB9: main (fluid.c:63)
+==67966== 
+==67966== Invalid read of size 1
+==67966==    at 0x484DAFD: memmove (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==67966==    by 0x6E3242F: ??? (in /usr/lib/x86_64-linux-gnu/libmpich.so.12.2.2)
+==67966==    by 0x4E1DFE7: ??? (in /usr/lib/x86_64-linux-gnu/libmpich.so.12.2.2)
+==67966==    by 0x4E1D8E8: ??? (in /usr/lib/x86_64-linux-gnu/libmpich.so.12.2.2)
+==67966==    by 0x4E1FD18: ??? (in /usr/lib/x86_64-linux-gnu/libmpich.so.12.2.2)
+==67966==    by 0x6F05021: ??? (in /usr/lib/x86_64-linux-gnu/libmpich.so.12.2.2)
+==67966==    by 0x4E13518: ??? (in /usr/lib/x86_64-linux-gnu/libmpich.so.12.2.2)
+==67966==    by 0x78191D4: ucp_dt_pack (in /usr/lib/x86_64-linux-gnu/libucp.so.0.0.0)
+==67966==    by 0x785B267: ??? (in /usr/lib/x86_64-linux-gnu/libucp.so.0.0.0)
+==67966==    by 0x79AE404: uct_mm_ep_am_bcopy (in /usr/lib/x86_64-linux-gnu/libuct.so.0.0.0)
+==67966==    by 0x78595FC: ??? (in /usr/lib/x86_64-linux-gnu/libucp.so.0.0.0)
+==67966==    by 0x78663B9: ucp_tag_send_nbx (in /usr/lib/x86_64-linux-gnu/libucp.so.0.0.0)
+==67966==  Address 0xb66182a is 10 bytes after a block of size 192 alloc'd
+==67966==    at 0x4843828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==67966==    by 0x127120: start_renderer (renderer.c:109)
+==67966==    by 0x10BCB9: main (fluid.c:63)
+==67966== 
+==== backtrace (tid:  67967) ====
+==== backtrace (tid:  67969) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2e4) [0x78dee14]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(+0x25e79) [0x78e3e79]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(+0x2603a) [0x78e403a]
+ 3  /lib/x86_64-linux-gnu/libc.so.6(+0x3c4b0) [0x73144b0]
+ 4  ./bin/sph.out(+0x275af) [0x12f5af]
+ 5  ./bin/sph.out(+0x3cde) [0x10bcde]
+ 6  /lib/x86_64-linux-gnu/libc.so.6(+0x23a90) [0x72fba90]
+ 7  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x89) [0x72fbb49]
+ 8  ./bin/sph.out(+0x3d35) [0x10bd35]
+=================================
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2e4) [0x78dee14]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(+0x25e79) [0x78e3e79]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(+0x2603a) [0x78e403a]
+ 3  /lib/x86_64-linux-gnu/libc.so.6(+0x3c4b0) [0x73144b0]
+ 4  ./bin/sph.out(+0x275af) [0x12f5af]
+ 5  ./bin/sph.out(+0x3cde) [0x10bcde]
+ 6  /lib/x86_64-linux-gnu/libc.so.6(+0x23a90) [0x72fba90]
+ 7  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x89) [0x72fbb49]
+ 8  ./bin/sph.out(+0x3d35) [0x10bd35]
+=================================
+==67967== 
+==67967== Process terminating with default action of signal 11 (SIGSEGV)
+==67967==    at 0x7368FFB: __pthread_kill_implementation (pthread_kill.c:44)
+==67967==    by 0x7368FFB: __pthread_kill_internal (pthread_kill.c:78)
+==67967==    by 0x7368FFB: pthread_kill@@GLIBC_2.34 (pthread_kill.c:89)
+==67967==    by 0x7314405: raise (raise.c:26)
+==67967==    by 0x73144AF: ??? (in /usr/lib/x86_64-linux-gnu/libc.so.6)
+==67967==    by 0x12F5AE: apply_gravity (fluid.c:457)
+==67967==    by 0x12F5AE: start_simulation (fluid.c:299)
+==67967== 
+==67967== HEAP SUMMARY:
+==67967==     in use at exit: 35,599,779 bytes in 12,015 blocks
+==67967==   total heap usage: 25,594 allocs, 13,579 frees, 1,466,079,123 bytes allocated
+==67967== 
+==== backtrace (tid:  67968) ====
+==67969== 
+==67969== Process terminating with default action of signal 11 (SIGSEGV)
+==67969==    at 0x7368FFB: __pthread_kill_implementation (pthread_kill.c:44)
+==67969==    by 0x7368FFB: __pthread_kill_internal (pthread_kill.c:78)
+==67969==    by 0x7368FFB: pthread_kill@@GLIBC_2.34 (pthread_kill.c:89)
+==67969==    by 0x7314405: raise (raise.c:26)
+==67969==    by 0x73144AF: ??? (in /usr/lib/x86_64-linux-gnu/libc.so.6)
+==67969==    by 0x12F5AE: apply_gravity (fluid.c:457)
+==67969==    by 0x12F5AE: start_simulation (fluid.c:299)
+==67969== 
+==67969== HEAP SUMMARY:
+==67969==     in use at exit: 35,599,059 bytes in 12,013 blocks
+==67969==   total heap usage: 25,592 allocs, 13,579 frees, 1,466,078,512 bytes allocated
+==67969== 
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2e4) [0x78dee14]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(+0x25e79) [0x78e3e79]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(+0x2603a) [0x78e403a]
+ 3  /lib/x86_64-linux-gnu/libc.so.6(+0x3c4b0) [0x73144b0]
+ 4  ./bin/sph.out(+0x275af) [0x12f5af]
+ 5  ./bin/sph.out(+0x3cde) [0x10bcde]
+ 6  /lib/x86_64-linux-gnu/libc.so.6(+0x23a90) [0x72fba90]
+ 7  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x89) [0x72fbb49]
+ 8  ./bin/sph.out(+0x3d35) [0x10bd35]
+=================================
+==67968== 
+==67968== Process terminating with default action of signal 11 (SIGSEGV)
+==67968==    at 0x7368FFB: __pthread_kill_implementation (pthread_kill.c:44)
+==67968==    by 0x7368FFB: __pthread_kill_internal (pthread_kill.c:78)
+==67968==    by 0x7368FFB: pthread_kill@@GLIBC_2.34 (pthread_kill.c:89)
+==67968==    by 0x7314405: raise (raise.c:26)
+==67968==    by 0x73144AF: ??? (in /usr/lib/x86_64-linux-gnu/libc.so.6)
+==67968==    by 0x12F5AE: apply_gravity (fluid.c:457)
+==67968==    by 0x12F5AE: start_simulation (fluid.c:299)
+==67968== 
+==67968== HEAP SUMMARY:
+==67968==     in use at exit: 35,599,059 bytes in 12,013 blocks
+==67968==   total heap usage: 25,591 allocs, 13,578 frees, 1,466,078,494 bytes allocated
+==67968== 
+==67967== LEAK SUMMARY:
+==67967==    definitely lost: 0 bytes in 0 blocks
+==67967==    indirectly lost: 0 bytes in 0 blocks
+==67967==      possibly lost: 46,884 bytes in 31 blocks
+==67967==    still reachable: 35,552,895 bytes in 11,984 blocks
+==67967==         suppressed: 0 bytes in 0 blocks
+==67967== Rerun with --leak-check=full to see details of leaked memory
+==67967== 
+==67967== Use --track-origins=yes to see where uninitialised values come from
+==67967== For lists of detected and suppressed errors, rerun with: -s
+==67967== ERROR SUMMARY: 5 errors from 5 contexts (suppressed: 0 from 0)
+==67969== LEAK SUMMARY:
+==67969==    definitely lost: 0 bytes in 0 blocks
+==67969==    indirectly lost: 0 bytes in 0 blocks
+==67969==      possibly lost: 46,884 bytes in 31 blocks
+==67969==    still reachable: 35,552,175 bytes in 11,982 blocks
+==67969==         suppressed: 0 bytes in 0 blocks
+==67969== Rerun with --leak-check=full to see details of leaked memory
+==67969== 
+==67969== Use --track-origins=yes to see where uninitialised values come from
+==67969== For lists of detected and suppressed errors, rerun with: -s
+==67969== ERROR SUMMARY: 5 errors from 5 contexts (suppressed: 0 from 0)
+==67968== LEAK SUMMARY:
+==67968==    definitely lost: 0 bytes in 0 blocks
+==67968==    indirectly lost: 0 bytes in 0 blocks
+==67968==      possibly lost: 46,884 bytes in 31 blocks
+==67968==    still reachable: 35,552,175 bytes in 11,982 blocks
+==67968==         suppressed: 0 bytes in 0 blocks
+==67968== Rerun with --leak-check=full to see details of leaked memory
+==67968== 
+==67968== Use --track-origins=yes to see where uninitialised values come from
+==67968== For lists of detected and suppressed errors, rerun with: -s
+==67968== ERROR SUMMARY: 5 errors from 5 contexts (suppressed: 0 from 0)
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 67967 RUNNING AT thetrick-linux
+=   EXIT CODE: 139
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+YOUR APPLICATION TERMINATED WITH THE EXIT STRING: Segmentation fault (signal 11)
+This typically refers to a problem with your application.
+Please see the FAQ page for debugging suggestions
+thetrick@thetrick-linux:~/3050/SPH$ ^C
