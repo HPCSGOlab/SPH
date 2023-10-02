@@ -145,15 +145,15 @@ int start_renderer()
     int *param_displs = malloc(num_procs * sizeof(int));
     for(i=0; i<num_procs; i++) {
         param_counts[i] = i?1:0; // will not receive from rank 0
-        param_displs[i] = i?i-1:0; // rank i will reside in params[i-1]
+        param_displs[i] = i?i-1:0; // rank i will reside in params[i-1] 
     }
     // Initial gather
     MPI_Gatherv(MPI_IN_PLACE, 0, TunableParamtype, node_params, param_counts, param_displs, TunableParamtype, 0, MPI_COMM_WORLD);
 
     // Fill in master parameters
-    for(i=0; i<render_state.num_compute_procs; i++)
+    for(i=0; i<render_state.num_compute_procs; i++){
         render_state.master_params[i] = node_params[i];
-
+    }
     // Set mover state
     mover_GLstate.mover_type = render_state.master_params[0].mover_type;
 
@@ -266,6 +266,11 @@ int start_renderer()
 
         // Send updated paramaters to compute nodes
         MPI_Scatterv(node_params, param_counts, param_displs, TunableParamtype, MPI_IN_PLACE, 0, TunableParamtype, 0, MPI_COMM_WORLD);
+
+        for(i=0; i<render_state.num_compute_procs; i++){
+            render_state.master_params[i].count_change = 0;
+            node_params[i].count_change = 0;
+        }
 
             // Retrieve all particle coordinates (x,y)
   	    // Potentially probe is expensive? Could just allocated num_compute_procs*num_particles_global and async recv

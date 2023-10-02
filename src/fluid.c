@@ -98,6 +98,7 @@ void start_simulation()
     params.tunable_params.mover_width = 2.0f;
     params.tunable_params.mover_height = 2.0f;
     params.tunable_params.mover_type = SPHERE_MOVER;
+    params.tunable_params.count_change = 0;
 
     #ifdef RASPI
     int steps_per_frame = 1; // Number of steps to compute before updating render node
@@ -273,27 +274,45 @@ void start_simulation()
 
     bool resize = true;
 
-    int step = 0;
+   
+    int goal_local_particles = (params.number_fluid_particles_global/nprocs) * scale_factor;
+    int particles_local_max = (params.number_fluid_particles_global/nprocs) * .95f;
+
+    params.number_fluid_particles_local = goal_local_particles;
+
 
     // Main simulation loop
     while(1) {
+   
+        if (params.tunable_params.count_change != 0 && (params.number_fluid_particles_local + params.tunable_params.count_change < particles_local_max)){
 
-        int goal_local_particles = (params.number_fluid_particles_global/nprocs) * scale_factor;
+            if (params.tunable_params.count_change > 0 ){
 
-        if (step == 200){
-            //params.max_fluid_particle_index = 16000;
-            //params.number_fluid_particles_local = 8000;
-            params.number_fluid_particles_local = goal_local_particles;
-        }
+                int pointer_index;
+                fluid_particle *n;
 
-        if (params.tunable_params.count_change > 0){
-            params.number_fluid_particles_local += params.tunable_params.count_change;
-            params.tunable_params.count_change = 0;
-        }
+                for(int i=0; i<params.tunable_params.count_change; i++)
+                {
+                    pointer_index = params.number_fluid_particles_local + params.number_halo_particles + 1; 
+
+                    n = fluid_particle_pointers[pointer_index]; 
+
+                    params.number_fluid_particles_local++;
+
+                    printf("p id : x %d : %f", n->id , n->x);
+
+                    n->x = (params.tunable_params.node_end_x - params.tunable_params.node_start_x)  / 2;
+                    n->y = boundary_global.max_y / 2;
+                }
  
-        step++;
-        
-        printf("rank: %d goal_local : %d f_index %d local %d halo: %d\n", rank,goal_local_particles, params.max_fluid_particle_index, params.number_fluid_particles_local,params.number_halo_particles);
+            }  else {
+                params.number_fluid_particles_local += params.tunable_params.count_change;
+            }      
+        }
+        params.tunable_params.count_change = 0;
+  
+  
+        //printf("rank: %d goal_local : %d f_index %d local %d halo: %d\n", rank,goal_local_particles, params.max_fluid_particle_index, params.number_fluid_particles_local,params.number_halo_particles);
 
         // Initialize velocities
         apply_gravity(fluid_particle_pointers, &params);
@@ -422,29 +441,6 @@ void start_simulation()
     // Close MPI
     freeMpiTypes();
 
-}
-
-// This should go into the hash, perhaps with the viscocity?
-void add_particle(fluid_particle **fluid_particle_pointers, param *params)
-{
-    int i;
-    fluid_particle *p;
-    // float dt = params->tunable_params.time_step;
-    // float g = -params->tunable_params.g;
-
-    // p = fluid_particle_pointers[0];
-
-    // fluid_particle_pointers[params->number_fluid_particles_local] = p;
-    // params->number_fluid_particles_local = params->number_fluid_particles_local + 1;
-
-    // for(i=0; i<(params->number_fluid_particles_local + params->number_halo_particles); i++) {
-    //     p = fluid_particle_pointers[i];
-
-    //     if (p->v_y != NULL){
-    //         p->v_y = 0;
-    //     }
-
-    //  }
 }
 
 void apply_gravity(fluid_particle **fluid_particle_pointers, param *params)

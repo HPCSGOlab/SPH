@@ -93,6 +93,13 @@ void increase_points(render_t *render_state)
 
 }
 
+void decrease_points(render_t *render_state)
+{
+    //TDH
+    render_state->master_params[0].count_change = -100;
+
+}
+
 // Increase gravity parameter
 void increase_gravity(render_t *render_state)
 {
