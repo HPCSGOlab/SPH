@@ -299,7 +299,7 @@ void start_simulation()
 
                     params.number_fluid_particles_local++;
 
-                    printf("p id : x %d : %f", n->id , n->x);
+                    //printf("p id : x %d : %f", n->id , n->x);
 
                     n->x = (params.tunable_params.node_end_x - params.tunable_params.node_start_x)  / 2;
                     n->y = boundary_global.max_y / 2;
@@ -310,7 +310,8 @@ void start_simulation()
             }      
         }
         params.tunable_params.count_change = 0;
-  
+
+ 
   
         //printf("rank: %d goal_local : %d f_index %d local %d halo: %d\n", rank,goal_local_particles, params.max_fluid_particle_index, params.number_fluid_particles_local,params.number_halo_particles);
 
