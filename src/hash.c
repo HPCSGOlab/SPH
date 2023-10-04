@@ -71,12 +71,12 @@ void hash_halo(fluid_particle **fluid_particle_pointers,  neighbor_grid_t *grid,
     // Loop over each halo particle
     for(i=n_start; i<n_finish; i++)
     {
-	// Retrieve hash index for halo particle
+	    // Retrieve hash index for halo particle
         h_p = fluid_particle_pointers[i];
 
-	// Calculate coordinates within bucket grid
-	grid_x = floor(h_p->x/spacing);
-	grid_y = floor(h_p->y/spacing);
+	    // Calculate coordinates within bucket grid
+        grid_x = floor(h_p->x/spacing);
+        grid_y = floor(h_p->y/spacing);
 
         // Check neighbors of current bucket
         // This only checks 'behind' neighbors as 'forward' neighbors are fluid particles
@@ -87,32 +87,33 @@ void hash_halo(fluid_particle **fluid_particle_pointers,  neighbor_grid_t *grid,
                 if ( grid_y+dy < 0 || grid_x+dx < 0 || (grid_x+dx) >= grid->size_x || (grid_y+dy) >= grid->size_y)
                     continue;
 
-	        // Calculate index of neighbor cell
-	        index = (grid_y + dy)*grid->size_x + (grid_x + dx);
+                // Calculate index of neighbor cell
+                index = (grid_y + dy)*grid->size_x + (grid_x + dx);
 
                 // Go through each fluid particle, p, in neighbor point bucket
                 for (n=0; n<grid_buckets[index].number_fluid; n++) {
                     p = grid_buckets[index].fluid_particles[n];
-	
-		    // Enforce cutoff
+        
+                    // Enforce cutoff
                     r2 = (h_p->x-p->x)*(h_p->x-p->x) + (h_p->y-p->y)*(h_p->y-p->y);
                     if(r2 > h2)
                         continue;
-	
-                     // Get neighbor bucket for particle p and add halo particle to it
-                     ne = &neighbors[p->id];
-                     if (ne->number_fluid_neighbors < max_neighbors) {
-                         ne->fluid_neighbors[ne->number_fluid_neighbors++] = h_p;
-			 if(compute_density) {
-			    r = sqrt(r2);
-                            ratio = r*h_recip;
-                            calculate_density(p, h_p, ratio);
-		  	  }
-                     }
-		     else
-			debug_print("halo overflowing\n");
 
-                }
+                    // Get neighbor bucket for particle p and add halo particle to it
+                    ne = &neighbors[p->id];
+                    if (ne->number_fluid_neighbors < max_neighbors) {
+                            ne->fluid_neighbors[ne->number_fluid_neighbors++] = h_p;
+
+                        if(compute_density) {
+                            r = sqrt(r2);
+                                        ratio = r*h_recip;
+                                        calculate_density(p, h_p, ratio);
+                        }
+                    }
+                    else
+                        debug_print("halo overflowing\n");
+
+                }   
 
             } // End neighbor search y
         } // End neighbor search x
