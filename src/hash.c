@@ -158,6 +158,11 @@ void hash_fluid(fluid_particle **fluid_particle_pointers, neighbor_grid_t *grid,
             
             index = hash_val(p->x, p->y, grid, params);
 
+            if (index >= length_hash){ //TDH
+                printf("hf over run at index: %d lh: %d \n",index,length_hash);
+            }
+
+
             if (grid_buckets[index].number_fluid < max_bucket_size) {
                 grid_buckets[index].fluid_particles[grid_buckets[index].number_fluid] = p;
                 grid_buckets[index].number_fluid++;

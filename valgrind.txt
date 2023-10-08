@@ -1,505 +1,408 @@
-==8970== WARNING: valgrind ignores shmget(shmflg) SHM_HUGETLB
-==8969== WARNING: valgrind ignores shmget(shmflg) SHM_HUGETLB
-==8971== WARNING: valgrind ignores shmget(shmflg) SHM_HUGETLB
-==8972== WARNING: valgrind ignores shmget(shmflg) SHM_HUGETLB
-compute rank: 0, num compute procs: 3 
-compute rank: 1, num compute procs: 3 
-compute rank: 2, num compute procs: 3 
-1:shader:
+Rank 1 start_x: 7.295172, end_x :15.000000
+Rank 0 start_x: 0.000000, end_x :7.295172
+initial number of particles 990
+initial number of particles 990
+smoothing radius: 0.503115
+smoothing radius: 0.503115
+grid x: 30 grid y 17
+bytes allocated: 328960
+rank 1 max fluid x: 14.841901
+grid x: 30 grid y 17
+Rank: 1, fluid_particles: 990, smoothing radius: 0.503115 
+bytes allocated: 328960
+rank 0 max fluid x: 7.295172
+Rank: 0, fluid_particles: 990, smoothing radius: 0.503115 
+ Main Sim Loop start for node at:0 with fp:990 gs: 0.503115 
+ Main Sim Loop start for node at:1 with fp:990 gs: 0.503115 
+==30595== Conditional jump or move depends on uninitialised value(s)
+==30596== Conditional jump or move depends on uninitialised value(s)
+==30595==    at 0x12DD00: boundaryConditions (fluid.c:737)
+==30595==    by 0x12D4F9: predict_positions (fluid.c:584)
+==30596==    at 0x12DD00: boundaryConditions (fluid.c:737)
+==30596==    by 0x12D4F9: predict_positions (fluid.c:584)
+==30595==    by 0x12CA8D: start_simulation (fluid.c:339)
+==30595==    by 0x12BF63: main (fluid.c:65)
+==30595== 
+==30596==    by 0x12CA8D: start_simulation (fluid.c:339)
+==30596==    by 0x12BF63: main (fluid.c:65)
+==30596== 
+==30595== Conditional jump or move depends on uninitialised value(s)
+==30595==    at 0x12DD12: boundaryConditions (fluid.c:737)
+==30595==    by 0x12D4F9: predict_positions (fluid.c:584)
+==30595==    by 0x12CA8D: start_simulation (fluid.c:339)
+==30595==    by 0x12BF63: main (fluid.c:65)
+==30595== 
+==30595== Conditional jump or move depends on uninitialised value(s)
+==30595==    at 0x4AF387C: sqrt (w_sqrt_compat.c:35)
+==30595==    by 0x12DD2F: boundaryConditions (fluid.c:738)
+==30595==    by 0x12D4F9: predict_positions (fluid.c:584)
+==30595==    by 0x12CA8D: start_simulation (fluid.c:339)
+==30595==    by 0x12BF63: main (fluid.c:65)
+==30595== 
+==30595== Conditional jump or move depends on uninitialised value(s)
+==30595==    at 0x12DF2A: boundaryConditions (fluid.c:795)
+==30595==    by 0x12D4F9: predict_positions (fluid.c:584)
+==30595==    by 0x12CA8D: start_simulation (fluid.c:339)
+==30595==    by 0x12BF63: main (fluid.c:65)
+==30595== 
+==30595== Conditional jump or move depends on uninitialised value(s)
+==30595==    at 0x12DF54: boundaryConditions (fluid.c:798)
+==30595==    by 0x12D4F9: predict_positions (fluid.c:584)
+==30595==    by 0x12CA8D: start_simulation (fluid.c:339)
+==30595==    by 0x12BF63: main (fluid.c:65)
+==30595== 
+==30595== Conditional jump or move depends on uninitialised value(s)
+==30595==    at 0x12DF89: boundaryConditions (fluid.c:801)
+==30595==    by 0x12D4F9: predict_positions (fluid.c:584)
+==30595==    by 0x12CA8D: start_simulation (fluid.c:339)
+==30595==    by 0x12BF63: main (fluid.c:65)
+==30595== 
+==30595== Conditional jump or move depends on uninitialised value(s)
+==30595==    at 0x12DFB4: boundaryConditions (fluid.c:804)
+==30595==    by 0x12D4F9: predict_positions (fluid.c:584)
+==30595==    by 0x12CA8D: start_simulation (fluid.c:339)
+==30595==    by 0x12BF63: main (fluid.c:65)
+==30595== 
+==30595== Conditional jump or move depends on uninitialised value(s)
+==30595==    at 0x12D391: identify_oob_particles (fluid.c:557)
+==30595==    by 0x12CB49: start_simulation (fluid.c:370)
+==30595==    by 0x12BF63: main (fluid.c:65)
+==30595== 
+==30595== Conditional jump or move depends on uninitialised value(s)
+==30595==    at 0x12D3D2: identify_oob_particles (fluid.c:559)
+==30595==    by 0x12CB49: start_simulation (fluid.c:370)
+==30595==    by 0x12BF63: main (fluid.c:65)
+==30595== 
+==30595== Conditional jump or move depends on uninitialised value(s)
+==30595==    at 0x12A1EA: hash_fluid (hash.c:161)
+==30595==    by 0x12CB6B: start_simulation (fluid.c:375)
+==30595==    by 0x12BF63: main (fluid.c:65)
+==30595== 
+==30595== Use of uninitialised value of size 8
+==30595==    at 0x12A219: hash_fluid (hash.c:166)
+==30595==    by 0x12CB6B: start_simulation (fluid.c:375)
+==30595==    by 0x12BF63: main (fluid.c:65)
+==30595== 
+==30595== Use of uninitialised value of size 8
+==30595==    at 0x12A232: hash_fluid (hash.c:167)
+==30595==    by 0x12CB6B: start_simulation (fluid.c:375)
+==30595==    by 0x12BF63: main (fluid.c:65)
+==30595== 
+==30595== Use of uninitialised value of size 8
+==30595==    at 0x12A246: hash_fluid (hash.c:167)
+==30595==    by 0x12CB6B: start_simulation (fluid.c:375)
+==30595==    by 0x12BF63: main (fluid.c:65)
+==30595== 
+==30595== Use of uninitialised value of size 8
+==30595==    at 0x12A26A: hash_fluid (hash.c:168)
+==30595==    by 0x12CB6B: start_simulation (fluid.c:375)
+==30595==    by 0x12BF63: main (fluid.c:65)
+==30595== 
+==30595== Conditional jump or move depends on uninitialised value(s)
+==30595==    at 0x12A640: hash_fluid (hash.c:227)
+==30595==    by 0x12CB6B: start_simulation (fluid.c:375)
+==30595==    by 0x12BF63: main (fluid.c:65)
+==30595== 
+==30595== Conditional jump or move depends on uninitialised value(s)
+==30595==    at 0x12A3CC: hash_fluid (hash.c:191)
+==30595==    by 0x12CB6B: start_simulation (fluid.c:375)
+==30595==    by 0x12BF63: main (fluid.c:65)
+==30595== 
+==30595== Conditional jump or move depends on uninitialised value(s)
+==30595==    at 0x4AF387C: sqrt (w_sqrt_compat.c:35)
+==30595==    by 0x12A427: hash_fluid (hash.c:197)
+==30595==    by 0x12CB6B: start_simulation (fluid.c:375)
+==30595==    by 0x12BF63: main (fluid.c:65)
+==30595== 
+==30595== Conditional jump or move depends on uninitialised value(s)
+==30595==    at 0x12D559: calculate_density (fluid.c:594)
+==30595==    by 0x12A459: hash_fluid (hash.c:199)
+==30595==    by 0x12CB6B: start_simulation (fluid.c:375)
+==30595==    by 0x12BF63: main (fluid.c:65)
+==30595== 
+==30595== Conditional jump or move depends on uninitialised value(s)
+==30595==    at 0x4AF387C: sqrt (w_sqrt_compat.c:35)
+==30595==    by 0x12A69B: hash_fluid (hash.c:232)
+==30595==    by 0x12CB6B: start_simulation (fluid.c:375)
+==30595==    by 0x12BF63: main (fluid.c:65)
+==30595== 
+==30595== Conditional jump or move depends on uninitialised value(s)
+==30595==    at 0x12D559: calculate_density (fluid.c:594)
+==30595==    by 0x12A6CD: hash_fluid (hash.c:234)
+==30595==    by 0x12CB6B: start_simulation (fluid.c:375)
+==30595==    by 0x12BF63: main (fluid.c:65)
+==30595== 
+==30595== Conditional jump or move depends on uninitialised value(s)
+==30595==    at 0x12AC1B: startHaloExchange (communication.c:148)
+==30595==    by 0x12CB8C: start_simulation (fluid.c:378)
+==30595==    by 0x12BF63: main (fluid.c:65)
+==30595== 
+==30595== Conditional jump or move depends on uninitialised value(s)
+==30595==    at 0x12AC76: startHaloExchange (communication.c:150)
+==30595==    by 0x12CB8C: start_simulation (fluid.c:378)
+==30595==    by 0x12BF63: main (fluid.c:65)
+==30595== 
+==30595== Conditional jump or move depends on uninitialised value(s)
+==30595==    at 0x4AF387C: sqrt (w_sqrt_compat.c:35)
+==30595==    by 0x12D7EF: double_density_relaxation (fluid.c:640)
+==30595==    by 0x12CBEF: start_simulation (fluid.c:387)
+==30595==    by 0x12BF63: main (fluid.c:65)
+==30595== 
+==30595== Conditional jump or move depends on uninitialised value(s)
+==30595==    at 0x12D838: double_density_relaxation (fluid.c:646)
+==30595==    by 0x12CBEF: start_simulation (fluid.c:387)
+==30595==    by 0x12BF63: main (fluid.c:65)
+==30595== 
+==30595== Conditional jump or move depends on uninitialised value(s)
+==30595==    at 0x12D882: double_density_relaxation (fluid.c:651)
+==30595==    by 0x12CBEF: start_simulation (fluid.c:387)
+==30595==    by 0x12BF63: main (fluid.c:65)
+==30595== 
+==30595== Conditional jump or move depends on uninitialised value(s)
+==30595==    at 0x12D894: double_density_relaxation (fluid.c:651)
+==30595==    by 0x12CBEF: start_simulation (fluid.c:387)
+==30595==    by 0x12BF63: main (fluid.c:65)
+==30595== 
+==30596== Conditional jump or move depends on uninitialised value(s)
+==30596==    at 0x12DD00: boundaryConditions (fluid.c:737)
+==30596==    by 0x12DC1E: updateVelocities (fluid.c:712)
+==30596==    by 0x12CC10: start_simulation (fluid.c:390)
+==30596==    by 0x12BF63: main (fluid.c:65)
+==30596== 
+==30595== Conditional jump or move depends on uninitialised value(s)
+==30595==    at 0x12DD00: boundaryConditions (fluid.c:737)
+==30595==    by 0x12DC1E: updateVelocities (fluid.c:712)
+==30595==    by 0x12CC10: start_simulation (fluid.c:390)
+==30595==    by 0x12BF63: main (fluid.c:65)
+==30595== 
+==30595== Conditional jump or move depends on uninitialised value(s)
+==30595==    at 0x12DD12: boundaryConditions (fluid.c:737)
+==30595==    by 0x12DC1E: updateVelocities (fluid.c:712)
+==30595==    by 0x12CC10: start_simulation (fluid.c:390)
+==30595==    by 0x12BF63: main (fluid.c:65)
+==30595== 
+==30595== Conditional jump or move depends on uninitialised value(s)
+==30595==    at 0x12DF2A: boundaryConditions (fluid.c:795)
+==30595==    by 0x12DC1E: updateVelocities (fluid.c:712)
+==30595==    by 0x12CC10: start_simulation (fluid.c:390)
+==30595==    by 0x12BF63: main (fluid.c:65)
+==30595== 
+==30595== Conditional jump or move depends on uninitialised value(s)
+==30595==    at 0x12DF54: boundaryConditions (fluid.c:798)
+==30595==    by 0x12DC1E: updateVelocities (fluid.c:712)
+==30595==    by 0x12CC10: start_simulation (fluid.c:390)
+==30595==    by 0x12BF63: main (fluid.c:65)
+==30595== 
+==30595== Conditional jump or move depends on uninitialised value(s)
+==30595==    at 0x12DA75: checkVelocity (fluid.c:680)
+==30595==    by 0x12DB94: updateVelocity (fluid.c:698)
+==30595==    by 0x12DC31: updateVelocities (fluid.c:713)
+==30595==    by 0x12CC10: start_simulation (fluid.c:390)
+==30595==    by 0x12BF63: main (fluid.c:65)
+==30595== 
+==30595== Conditional jump or move depends on uninitialised value(s)
+==30595==    at 0x12DAA1: checkVelocity (fluid.c:682)
+==30595==    by 0x12DB94: updateVelocity (fluid.c:698)
+==30595==    by 0x12DC31: updateVelocities (fluid.c:713)
+==30595==    by 0x12CC10: start_simulation (fluid.c:390)
+==30595==    by 0x12BF63: main (fluid.c:65)
+==30595== 
+==30595== Conditional jump or move depends on uninitialised value(s)
+==30595==    at 0x12DF89: boundaryConditions (fluid.c:801)
+==30595==    by 0x12DC1E: updateVelocities (fluid.c:712)
+==30595==    by 0x12CC10: start_simulation (fluid.c:390)
+==30595==    by 0x12BF63: main (fluid.c:65)
+==30595== 
+==30595== Conditional jump or move depends on uninitialised value(s)
+==30595==    at 0x4AF387C: sqrt (w_sqrt_compat.c:35)
+==30595==    by 0x12DD2F: boundaryConditions (fluid.c:738)
+==30595==    by 0x12DC1E: updateVelocities (fluid.c:712)
+==30595==    by 0x12CC10: start_simulation (fluid.c:390)
+==30595==    by 0x12BF63: main (fluid.c:65)
+==30595== 
+==30595== Conditional jump or move depends on uninitialised value(s)
+==30595==    at 0x12DFB4: boundaryConditions (fluid.c:804)
+==30595==    by 0x12DC1E: updateVelocities (fluid.c:712)
+==30595==    by 0x12CC10: start_simulation (fluid.c:390)
+==30595==    by 0x12BF63: main (fluid.c:65)
+==30595== 
+==30595== Conditional jump or move depends on uninitialised value(s)
+==30595==    at 0x12DAC7: checkVelocity (fluid.c:684)
+==30595==    by 0x12DB94: updateVelocity (fluid.c:698)
+==30595==    by 0x12DC31: updateVelocities (fluid.c:713)
+==30595==    by 0x12CC10: start_simulation (fluid.c:390)
+==30595==    by 0x12BF63: main (fluid.c:65)
+==30595== 
+==30595== Conditional jump or move depends on uninitialised value(s)
+==30595==    at 0x12DAF3: checkVelocity (fluid.c:686)
+==30595==    by 0x12DB94: updateVelocity (fluid.c:698)
+==30595==    by 0x12DC31: updateVelocities (fluid.c:713)
+==30595==    by 0x12CC10: start_simulation (fluid.c:390)
+==30595==    by 0x12BF63: main (fluid.c:65)
+==30595== 
+==30595== Conditional jump or move depends on uninitialised value(s)
+==30595==    at 0x12AC1B: startHaloExchange (communication.c:148)
+==30595==    by 0x12CC31: start_simulation (fluid.c:397)
+==30595==    by 0x12BF63: main (fluid.c:65)
+==30595== 
+==30595== Conditional jump or move depends on uninitialised value(s)
+==30595==    at 0x12AC76: startHaloExchange (communication.c:150)
+==30595==    by 0x12CC31: start_simulation (fluid.c:397)
+==30595==    by 0x12BF63: main (fluid.c:65)
+==30595== 
+==30595== Conditional jump or move depends on uninitialised value(s)
+==30595==    at 0x12A1EA: hash_fluid (hash.c:161)
+==30595==    by 0x12CC53: start_simulation (fluid.c:401)
+==30595==    by 0x12BF63: main (fluid.c:65)
+==30595== 
+==30595== Use of uninitialised value of size 8
+==30595==    at 0x12A219: hash_fluid (hash.c:166)
+==30595==    by 0x12CC53: start_simulation (fluid.c:401)
+==30595==    by 0x12BF63: main (fluid.c:65)
+==30595== 
+==30595== Use of uninitialised value of size 8
+==30595==    at 0x12A232: hash_fluid (hash.c:167)
+==30595==    by 0x12CC53: start_simulation (fluid.c:401)
+==30595==    by 0x12BF63: main (fluid.c:65)
+==30595== 
+==30595== Use of uninitialised value of size 8
+==30595==    at 0x12A246: hash_fluid (hash.c:167)
+==30595==    by 0x12CC53: start_simulation (fluid.c:401)
+==30595==    by 0x12BF63: main (fluid.c:65)
+==30595== 
+==30595== Use of uninitialised value of size 8
+==30595==    at 0x12A26A: hash_fluid (hash.c:168)
+==30595==    by 0x12CC53: start_simulation (fluid.c:401)
+==30595==    by 0x12BF63: main (fluid.c:65)
+==30595== 
+==30595== Conditional jump or move depends on uninitialised value(s)
+==30595==    at 0x12A640: hash_fluid (hash.c:227)
+==30595==    by 0x12CC53: start_simulation (fluid.c:401)
+==30595==    by 0x12BF63: main (fluid.c:65)
+==30595== 
+==30595== Conditional jump or move depends on uninitialised value(s)
+==30595==    at 0x12A3CC: hash_fluid (hash.c:191)
+==30595==    by 0x12CC53: start_simulation (fluid.c:401)
+==30595==    by 0x12BF63: main (fluid.c:65)
+==30595== 
+==30595== Conditional jump or move depends on uninitialised value(s)
+==30595==    at 0x4AF387C: sqrt (w_sqrt_compat.c:35)
+==30595==    by 0x12D0EA: viscosity_impluses (fluid.c:507)
+==30595==    by 0x12CA6D: start_simulation (fluid.c:336)
+==30595==    by 0x12BF63: main (fluid.c:65)
+==30595== 
+==30595== Conditional jump or move depends on uninitialised value(s)
+==30595==    at 0x12D16C: viscosity_impluses (fluid.c:514)
+==30595==    by 0x12CA6D: start_simulation (fluid.c:336)
+==30595==    by 0x12BF63: main (fluid.c:65)
+==30595== 
+==30595== Conditional jump or move depends on uninitialised value(s)
+==30595==    at 0x12DA75: checkVelocity (fluid.c:680)
+==30595==    by 0x12D1EA: viscosity_impluses (fluid.c:522)
+==30595==    by 0x12CA6D: start_simulation (fluid.c:336)
+==30595==    by 0x12BF63: main (fluid.c:65)
+==30595== 
+==30595== Conditional jump or move depends on uninitialised value(s)
+==30595==    at 0x12DAA1: checkVelocity (fluid.c:682)
+==30595==    by 0x12D1EA: viscosity_impluses (fluid.c:522)
+==30595==    by 0x12CA6D: start_simulation (fluid.c:336)
+==30595==    by 0x12BF63: main (fluid.c:65)
+==30595== 
+==30595== Conditional jump or move depends on uninitialised value(s)
+==30595==    at 0x12DAC7: checkVelocity (fluid.c:684)
+==30595==    by 0x12D1EA: viscosity_impluses (fluid.c:522)
+==30595==    by 0x12CA6D: start_simulation (fluid.c:336)
+==30595==    by 0x12BF63: main (fluid.c:65)
+==30595== 
+==30595== Conditional jump or move depends on uninitialised value(s)
+==30595==    at 0x12DAF3: checkVelocity (fluid.c:686)
+==30595==    by 0x12D1EA: viscosity_impluses (fluid.c:522)
+==30595==    by 0x12CA6D: start_simulation (fluid.c:336)
+==30595==    by 0x12BF63: main (fluid.c:65)
+==30595== 
+==30595== Conditional jump or move depends on uninitialised value(s)
+==30595==    at 0x129F80: hash_halo (hash.c:99)
+==30595==    by 0x12CC96: start_simulation (fluid.c:408)
+==30595==    by 0x12BF63: main (fluid.c:65)
+==30595== 
+==30595== Conditional jump or move depends on uninitialised value(s)
+==30595==    at 0x129F80: hash_halo (hash.c:99)
+==30595==    by 0x12CBCF: start_simulation (fluid.c:383)
+==30595==    by 0x12BF63: main (fluid.c:65)
+==30595== 
+==30595== Conditional jump or move depends on uninitialised value(s)
+==30595==    at 0x4AF387C: sqrt (w_sqrt_compat.c:35)
+==30595==    by 0x129FF6: hash_halo (hash.c:108)
+==30595==    by 0x12CBCF: start_simulation (fluid.c:383)
+==30595==    by 0x12BF63: main (fluid.c:65)
+==30595== 
+==30595== Conditional jump or move depends on uninitialised value(s)
+==30595==    at 0x12D559: calculate_density (fluid.c:594)
+==30595==    by 0x12A028: hash_halo (hash.c:110)
+==30595==    by 0x12CBCF: start_simulation (fluid.c:383)
+==30595==    by 0x12BF63: main (fluid.c:65)
+==30595== 
+==30595== 
+==30595== More than 10000000 total errors detected.  I'm not reporting any more.
+==30595== Final error counts will be inaccurate.  Go fix your program!
+==30595== Rerun with --error-limit=no to disable this cutoff.  Note
+==30595== that errors may occur in your program without prior warning from
+==30595== Valgrind, because errors are no longer being displayed.
+==30595== 
+close
+[WARNING] yaksa: 2 leaked handle pool objects
+==30596== Syscall param exit_group(status) contains uninitialised byte(s)
+==30596==    at 0x73BA24D: _Exit (_exit.c:30)
+==30596==    by 0x7316B56: __run_exit_handlers (exit.c:134)
+==30596==    by 0x7316CCF: exit (exit.c:141)
+==30596==    by 0x72FBA96: (below main) (libc_start_call_main.h:74)
+==30596== 
+==30595== 
+==30595== HEAP SUMMARY:
+==30595==     in use at exit: 738,974 bytes in 8,763 blocks
+==30595==   total heap usage: 80,519 allocs, 71,756 frees, 1,460,161,459 bytes allocated
+==30595== 
+==30596== 
+==30596== HEAP SUMMARY:
+==30596==     in use at exit: 738,254 bytes in 8,761 blocks
+==30596==   total heap usage: 80,465 allocs, 71,704 frees, 1,460,054,464 bytes allocated
+==30596== 
+==30595== LEAK SUMMARY:
+==30595==    definitely lost: 136 bytes in 1 blocks
+==30595==    indirectly lost: 637,713 bytes in 8,689 blocks
+==30595==      possibly lost: 0 bytes in 0 blocks
+==30595==    still reachable: 101,125 bytes in 73 blocks
+==30595==         suppressed: 0 bytes in 0 blocks
+==30595== Rerun with --leak-check=full to see details of leaked memory
+==30595== 
+==30595== Use --track-origins=yes to see where uninitialised values come from
+==30595== For lists of detected and suppressed errors, rerun with: -s
+==30595== ERROR SUMMARY: 10000000 errors from 56 contexts (suppressed: 0 from 0)
+==30596== LEAK SUMMARY:
+==30596==    definitely lost: 136 bytes in 1 blocks
+==30596==    indirectly lost: 637,713 bytes in 8,689 blocks
+==30596==      possibly lost: 0 bytes in 0 blocks
+==30596==    still reachable: 100,405 bytes in 71 blocks
+==30596==         suppressed: 0 bytes in 0 blocks
+==30596== Rerun with --leak-check=full to see details of leaked memory
+==30596== 
+==30596== Use --track-origins=yes to see where uninitialised values come from
+==30596== For lists of detected and suppressed errors, rerun with: -s
+==30596== ERROR SUMMARY: 6935 errors from 3 contexts (suppressed: 0 from 0)
+==30594== 
+==30594== HEAP SUMMARY:
+==30594==     in use at exit: 1,034,264 bytes in 12,210 blocks
+==30594==   total heap usage: 121,834 allocs, 109,624 frees, 1,626,293,154 bytes allocated
+==30594== 
+==30594== LEAK SUMMARY:
+==30594==    definitely lost: 656 bytes in 4 blocks
+==30594==    indirectly lost: 27,909 bytes in 85 blocks
+==30594==      possibly lost: 56 bytes in 1 blocks
+==30594==    still reachable: 1,005,643 bytes in 12,120 blocks
+==30594==         suppressed: 0 bytes in 0 blocks
+==30594== Rerun with --leak-check=full to see details of leaked memory
+==30594== 
+==30594== For lists of detected and suppressed errors, rerun with: -s
+==30594== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+thetrick@thetrick-linux:~/3050/SPH$ 
 
-2:shader:
-
-3:program:
-
-4:shader:
-
-5:shader:
-
-6:program:
-
-7:shader:
-
-8:shader:
-
-9:program:
-
-10:shader:
-
-11:shader:
-
-12:program:
-
-13:shader:
-
-14:program:
-
-15:shader:
-
-16:shader:
-
-17:program:
-
-18:shader:
-
-19:shader:
-
-20:program:
-
-21:shader:
-
-22:shader:
-
-23:program:
-
-Background image loaded: 600 x 800 pixels
-Screen resolution 1600, 900
-ul (-0.312500,0.666667), ur (0.312500, 0.666667), ll (-0.312500, -0.666667), lr (0.312500, -0.666667)
-24:shader:
-
-25:shader:
-
-26:program:
-
-27:shader:
-
-28:shader:
-
-29:program:
-
-loaded image: 1050x650
-loaded image: 1050x650
-30:shader:
-
-31:shader:
-
-32:program:
-
-loaded image: 1050x650
-loaded image: 1050x650
-33:shader:
-
-34:shader:
-
-35:program:
-
-loaded image: 1050x650
-loaded image: 1050x650
-36:shader:
-
-37:shader:
-
-38:program:
-
-loaded image: 600x800
-39:shader:
-
-40:shader:
-
-41:program:
-
-Rank 2 start_x: 10.023239, end_x :15.000000
-initial number of particles 1643
-Rank 0 start_x: 0.000000, end_x :4.932070
-Rank 1 start_x: 4.932070, end_x :10.023239
-initial number of particles 1696
-initial number of particles 1696
-smoothing radius: 0.318198
-smoothing radius: 0.318198
-smoothing radius: 0.318198
-grid x: 48 grid y 27
-grid x: 48 grid y 27
-bytes allocated: 830336
-bytes allocated: 830336
-grid x: 48 grid y 27
-rank 2 max fluid x: 14.955309
-rank 1 max fluid x: 10.023239
-bytes allocated: 830336
-Rank: 2, fluid_particles: 1643, smoothing radius: 0.318198 
-Rank: 1, fluid_particles: 1696, smoothing radius: 0.318198 
-rank 0 max fluid x: 4.932070
-Rank: 0, fluid_particles: 1696, smoothing radius: 0.318198 
-==8971== Conditional jump or move depends on uninitialised value(s)
-==8971==    at 0x12DB9D: boundaryConditions (fluid.c:723)
-==8971==    by 0x12D39F: predict_positions (fluid.c:570)
-==8971==    by 0x12C943: start_simulation (fluid.c:325)
-==8971==    by 0x12BE2E: main (fluid.c:65)
-==8971== 
-==8972== Conditional jump or move depends on uninitialised value(s)
-==8972==    at 0x12DB9D: boundaryConditions (fluid.c:723)
-==8972==    by 0x12D39F: predict_positions (fluid.c:570)
-==8972==    by 0x12C943: start_simulation (fluid.c:325)
-==8972==    by 0x12BE2E: main (fluid.c:65)
-==8972== 
-==8970== Conditional jump or move depends on uninitialised value(s)
-==8970==    at 0x12DB9D: boundaryConditions (fluid.c:723)
-==8970==    by 0x12D39F: predict_positions (fluid.c:570)
-==8970==    by 0x12C943: start_simulation (fluid.c:325)
-==8970==    by 0x12BE2E: main (fluid.c:65)
-==8970== 
-==8970== Conditional jump or move depends on uninitialised value(s)
-==8970==    at 0x12DBAB: boundaryConditions (fluid.c:723)
-==8970==    by 0x12D39F: predict_positions (fluid.c:570)
-==8970==    by 0x12C943: start_simulation (fluid.c:325)
-==8970==    by 0x12BE2E: main (fluid.c:65)
-==8970== 
-==8970== Conditional jump or move depends on uninitialised value(s)
-==8970==    at 0x4AF383C: sqrt (w_sqrt_compat.c:35)
-==8970==    by 0x12DBC8: boundaryConditions (fluid.c:724)
-==8970==    by 0x12D39F: predict_positions (fluid.c:570)
-==8970==    by 0x12C943: start_simulation (fluid.c:325)
-==8970==    by 0x12BE2E: main (fluid.c:65)
-==8970== 
-==8970== Conditional jump or move depends on uninitialised value(s)
-==8970==    at 0x12DDC3: boundaryConditions (fluid.c:781)
-==8970==    by 0x12D39F: predict_positions (fluid.c:570)
-==8970==    by 0x12C943: start_simulation (fluid.c:325)
-==8970==    by 0x12BE2E: main (fluid.c:65)
-==8970== 
-==8970== Conditional jump or move depends on uninitialised value(s)
-==8970==    at 0x12DDED: boundaryConditions (fluid.c:784)
-==8970==    by 0x12D39F: predict_positions (fluid.c:570)
-==8970==    by 0x12C943: start_simulation (fluid.c:325)
-==8970==    by 0x12BE2E: main (fluid.c:65)
-==8970== 
-==8970== Conditional jump or move depends on uninitialised value(s)
-==8970==    at 0x12DE22: boundaryConditions (fluid.c:787)
-==8970==    by 0x12D39F: predict_positions (fluid.c:570)
-==8970==    by 0x12C943: start_simulation (fluid.c:325)
-==8970==    by 0x12BE2E: main (fluid.c:65)
-==8970== 
-==8970== Conditional jump or move depends on uninitialised value(s)
-==8970==    at 0x12DE4D: boundaryConditions (fluid.c:790)
-==8970==    by 0x12D39F: predict_positions (fluid.c:570)
-==8970==    by 0x12C943: start_simulation (fluid.c:325)
-==8970==    by 0x12BE2E: main (fluid.c:65)
-==8970== 
-==8970== Conditional jump or move depends on uninitialised value(s)
-==8970==    at 0x12D237: identify_oob_particles (fluid.c:543)
-==8970==    by 0x12C9FF: start_simulation (fluid.c:356)
-==8970==    by 0x12BE2E: main (fluid.c:65)
-==8970== 
-==8970== Conditional jump or move depends on uninitialised value(s)
-==8970==    at 0x12D278: identify_oob_particles (fluid.c:545)
-==8970==    by 0x12C9FF: start_simulation (fluid.c:356)
-==8970==    by 0x12BE2E: main (fluid.c:65)
-==8970== 
-==8970== Use of uninitialised value of size 8
-==8970==    at 0x12A0F2: hash_fluid (hash.c:160)
-==8970==    by 0x12CA21: start_simulation (fluid.c:361)
-==8970==    by 0x12BE2E: main (fluid.c:65)
-==8970== 
-==8970== Use of uninitialised value of size 8
-==8970==    at 0x12A10B: hash_fluid (hash.c:161)
-==8970==    by 0x12CA21: start_simulation (fluid.c:361)
-==8970==    by 0x12BE2E: main (fluid.c:65)
-==8970== 
-==8970== Use of uninitialised value of size 8
-==8970==    at 0x12A11F: hash_fluid (hash.c:161)
-==8970==    by 0x12CA21: start_simulation (fluid.c:361)
-==8970==    by 0x12BE2E: main (fluid.c:65)
-==8970== 
-==8970== Use of uninitialised value of size 8
-==8970==    at 0x12A143: hash_fluid (hash.c:162)
-==8970==    by 0x12CA21: start_simulation (fluid.c:361)
-==8970==    by 0x12BE2E: main (fluid.c:65)
-==8970== 
-==8970== Conditional jump or move depends on uninitialised value(s)
-==8970==    at 0x12A519: hash_fluid (hash.c:221)
-==8970==    by 0x12CA21: start_simulation (fluid.c:361)
-==8970==    by 0x12BE2E: main (fluid.c:65)
-==8970== 
-==8970== Conditional jump or move depends on uninitialised value(s)
-==8970==    at 0x4AF383C: sqrt (w_sqrt_compat.c:35)
-==8970==    by 0x12A574: hash_fluid (hash.c:226)
-==8970==    by 0x12CA21: start_simulation (fluid.c:361)
-==8970==    by 0x12BE2E: main (fluid.c:65)
-==8970== 
-==8970== Conditional jump or move depends on uninitialised value(s)
-==8970==    at 0x12D3FF: calculate_density (fluid.c:580)
-==8970==    by 0x12A5A6: hash_fluid (hash.c:228)
-==8970==    by 0x12CA21: start_simulation (fluid.c:361)
-==8970==    by 0x12BE2E: main (fluid.c:65)
-==8970== 
-==8970== Conditional jump or move depends on uninitialised value(s)
-==8970==    at 0x12A2A5: hash_fluid (hash.c:185)
-==8970==    by 0x12CA21: start_simulation (fluid.c:361)
-==8970==    by 0x12BE2E: main (fluid.c:65)
-==8970== 
-==8970== Conditional jump or move depends on uninitialised value(s)
-==8970==    at 0x4AF383C: sqrt (w_sqrt_compat.c:35)
-==8970==    by 0x12A300: hash_fluid (hash.c:191)
-==8970==    by 0x12CA21: start_simulation (fluid.c:361)
-==8970==    by 0x12BE2E: main (fluid.c:65)
-==8970== 
-==8970== Conditional jump or move depends on uninitialised value(s)
-==8970==    at 0x12D3FF: calculate_density (fluid.c:580)
-==8970==    by 0x12A332: hash_fluid (hash.c:193)
-==8970==    by 0x12CA21: start_simulation (fluid.c:361)
-==8970==    by 0x12BE2E: main (fluid.c:65)
-==8970== 
-==8970== Conditional jump or move depends on uninitialised value(s)
-==8970==    at 0x12AAED: startHaloExchange (communication.c:148)
-==8970==    by 0x12CA42: start_simulation (fluid.c:364)
-==8970==    by 0x12BE2E: main (fluid.c:65)
-==8970== 
-==8970== Conditional jump or move depends on uninitialised value(s)
-==8970==    at 0x12AB41: startHaloExchange (communication.c:150)
-==8970==    by 0x12CA42: start_simulation (fluid.c:364)
-==8970==    by 0x12BE2E: main (fluid.c:65)
-==8970== 
-==8972== Conditional jump or move depends on uninitialised value(s)
-==8972==    at 0x12DB9D: boundaryConditions (fluid.c:723)
-==8972==    by 0x12DABB: updateVelocities (fluid.c:698)
-==8972==    by 0x12CAC6: start_simulation (fluid.c:376)
-==8972==    by 0x12BE2E: main (fluid.c:65)
-==8972== 
-==8970== Conditional jump or move depends on uninitialised value(s)
-==8970==    at 0x4AF383C: sqrt (w_sqrt_compat.c:35)
-==8970==    by 0x12D695: double_density_relaxation (fluid.c:626)
-==8970==    by 0x12CAA5: start_simulation (fluid.c:373)
-==8970==    by 0x12BE2E: main (fluid.c:65)
-==8970== 
-==8970== Conditional jump or move depends on uninitialised value(s)
-==8970==    at 0x12D6DE: double_density_relaxation (fluid.c:632)
-==8970==    by 0x12CAA5: start_simulation (fluid.c:373)
-==8970==    by 0x12BE2E: main (fluid.c:65)
-==8970== 
-==8970== Conditional jump or move depends on uninitialised value(s)
-==8970==    at 0x12D728: double_density_relaxation (fluid.c:637)
-==8970==    by 0x12CAA5: start_simulation (fluid.c:373)
-==8970==    by 0x12BE2E: main (fluid.c:65)
-==8970== 
-==8970== Conditional jump or move depends on uninitialised value(s)
-==8970==    at 0x12D736: double_density_relaxation (fluid.c:637)
-==8970==    by 0x12CAA5: start_simulation (fluid.c:373)
-==8970==    by 0x12BE2E: main (fluid.c:65)
-==8970== 
-==8970== Conditional jump or move depends on uninitialised value(s)
-==8970==    at 0x12DB9D: boundaryConditions (fluid.c:723)
-==8970==    by 0x12DABB: updateVelocities (fluid.c:698)
-==8970==    by 0x12CAC6: start_simulation (fluid.c:376)
-==8970==    by 0x12BE2E: main (fluid.c:65)
-==8970== 
-==8970== Conditional jump or move depends on uninitialised value(s)
-==8970==    at 0x12DBAB: boundaryConditions (fluid.c:723)
-==8970==    by 0x12DABB: updateVelocities (fluid.c:698)
-==8970==    by 0x12CAC6: start_simulation (fluid.c:376)
-==8970==    by 0x12BE2E: main (fluid.c:65)
-==8970== 
-==8970== Conditional jump or move depends on uninitialised value(s)
-==8970==    at 0x12DDC3: boundaryConditions (fluid.c:781)
-==8970==    by 0x12DABB: updateVelocities (fluid.c:698)
-==8970==    by 0x12CAC6: start_simulation (fluid.c:376)
-==8970==    by 0x12BE2E: main (fluid.c:65)
-==8970== 
-==8970== Conditional jump or move depends on uninitialised value(s)
-==8970==    at 0x12DDED: boundaryConditions (fluid.c:784)
-==8970==    by 0x12DABB: updateVelocities (fluid.c:698)
-==8970==    by 0x12CAC6: start_simulation (fluid.c:376)
-==8970==    by 0x12BE2E: main (fluid.c:65)
-==8970== 
-==8970== Conditional jump or move depends on uninitialised value(s)
-==8970==    at 0x12D912: checkVelocity (fluid.c:666)
-==8970==    by 0x12DA31: updateVelocity (fluid.c:684)
-==8970==    by 0x12DACE: updateVelocities (fluid.c:699)
-==8970==    by 0x12CAC6: start_simulation (fluid.c:376)
-==8970==    by 0x12BE2E: main (fluid.c:65)
-==8970== 
-==8970== Conditional jump or move depends on uninitialised value(s)
-==8970==    at 0x12D93E: checkVelocity (fluid.c:668)
-==8970==    by 0x12DA31: updateVelocity (fluid.c:684)
-==8970==    by 0x12DACE: updateVelocities (fluid.c:699)
-==8970==    by 0x12CAC6: start_simulation (fluid.c:376)
-==8970==    by 0x12BE2E: main (fluid.c:65)
-==8970== 
-==8970== Conditional jump or move depends on uninitialised value(s)
-==8970==    at 0x12DE22: boundaryConditions (fluid.c:787)
-==8970==    by 0x12DABB: updateVelocities (fluid.c:698)
-==8970==    by 0x12CAC6: start_simulation (fluid.c:376)
-==8970==    by 0x12BE2E: main (fluid.c:65)
-==8970== 
-==8970== Conditional jump or move depends on uninitialised value(s)
-==8970==    at 0x4AF383C: sqrt (w_sqrt_compat.c:35)
-==8970==    by 0x12DBC8: boundaryConditions (fluid.c:724)
-==8970==    by 0x12DABB: updateVelocities (fluid.c:698)
-==8970==    by 0x12CAC6: start_simulation (fluid.c:376)
-==8970==    by 0x12BE2E: main (fluid.c:65)
-==8970== 
-==8970== Conditional jump or move depends on uninitialised value(s)
-==8970==    at 0x12DE4D: boundaryConditions (fluid.c:790)
-==8970==    by 0x12DABB: updateVelocities (fluid.c:698)
-==8970==    by 0x12CAC6: start_simulation (fluid.c:376)
-==8970==    by 0x12BE2E: main (fluid.c:65)
-==8970== 
-==8970== Conditional jump or move depends on uninitialised value(s)
-==8970==    at 0x12D964: checkVelocity (fluid.c:670)
-==8970==    by 0x12DA31: updateVelocity (fluid.c:684)
-==8970==    by 0x12DACE: updateVelocities (fluid.c:699)
-==8970==    by 0x12CAC6: start_simulation (fluid.c:376)
-==8970==    by 0x12BE2E: main (fluid.c:65)
-==8970== 
-==8970== Conditional jump or move depends on uninitialised value(s)
-==8970==    at 0x12D990: checkVelocity (fluid.c:672)
-==8970==    by 0x12DA31: updateVelocity (fluid.c:684)
-==8970==    by 0x12DACE: updateVelocities (fluid.c:699)
-==8970==    by 0x12CAC6: start_simulation (fluid.c:376)
-==8970==    by 0x12BE2E: main (fluid.c:65)
-==8970== 
-==8970== Conditional jump or move depends on uninitialised value(s)
-==8970==    at 0x12AAED: startHaloExchange (communication.c:148)
-==8970==    by 0x12CAE7: start_simulation (fluid.c:383)
-==8970==    by 0x12BE2E: main (fluid.c:65)
-==8970== 
-==8970== Conditional jump or move depends on uninitialised value(s)
-==8970==    at 0x12AB41: startHaloExchange (communication.c:150)
-==8970==    by 0x12CAE7: start_simulation (fluid.c:383)
-==8970==    by 0x12BE2E: main (fluid.c:65)
-==8970== 
-==8971== Conditional jump or move depends on uninitialised value(s)
-==8971==    at 0x12DB9D: boundaryConditions (fluid.c:723)
-==8971==    by 0x12DABB: updateVelocities (fluid.c:698)
-==8971==    by 0x12CAC6: start_simulation (fluid.c:376)
-==8971==    by 0x12BE2E: main (fluid.c:65)
-==8971== 
-==8970== Use of uninitialised value of size 8
-==8970==    at 0x12A0F2: hash_fluid (hash.c:160)
-==8970==    by 0x12CB09: start_simulation (fluid.c:387)
-==8970==    by 0x12BE2E: main (fluid.c:65)
-==8970== 
-==8970== Use of uninitialised value of size 8
-==8970==    at 0x12A10B: hash_fluid (hash.c:161)
-==8970==    by 0x12CB09: start_simulation (fluid.c:387)
-==8970==    by 0x12BE2E: main (fluid.c:65)
-==8970== 
-==8970== Use of uninitialised value of size 8
-==8970==    at 0x12A11F: hash_fluid (hash.c:161)
-==8970==    by 0x12CB09: start_simulation (fluid.c:387)
-==8970==    by 0x12BE2E: main (fluid.c:65)
-==8970== 
-==8970== Use of uninitialised value of size 8
-==8970==    at 0x12A143: hash_fluid (hash.c:162)
-==8970==    by 0x12CB09: start_simulation (fluid.c:387)
-==8970==    by 0x12BE2E: main (fluid.c:65)
-==8970== 
-==8970== Conditional jump or move depends on uninitialised value(s)
-==8970==    at 0x12A519: hash_fluid (hash.c:221)
-==8970==    by 0x12CB09: start_simulation (fluid.c:387)
-==8970==    by 0x12BE2E: main (fluid.c:65)
-==8970== 
-==8970== Conditional jump or move depends on uninitialised value(s)
-==8970==    at 0x12A2A5: hash_fluid (hash.c:185)
-==8970==    by 0x12CB09: start_simulation (fluid.c:387)
-==8970==    by 0x12BE2E: main (fluid.c:65)
-==8970== 
-==8970== Conditional jump or move depends on uninitialised value(s)
-==8970==    at 0x4AF383C: sqrt (w_sqrt_compat.c:35)
-==8970==    by 0x12CFA0: viscosity_impluses (fluid.c:493)
-==8970==    by 0x12C923: start_simulation (fluid.c:322)
-==8970==    by 0x12BE2E: main (fluid.c:65)
-==8970== 
-==8970== Conditional jump or move depends on uninitialised value(s)
-==8970==    at 0x12D01E: viscosity_impluses (fluid.c:500)
-==8970==    by 0x12C923: start_simulation (fluid.c:322)
-==8970==    by 0x12BE2E: main (fluid.c:65)
-==8970== 
-==8970== Conditional jump or move depends on uninitialised value(s)
-==8970==    at 0x12D912: checkVelocity (fluid.c:666)
-==8970==    by 0x12D090: viscosity_impluses (fluid.c:508)
-==8970==    by 0x12C923: start_simulation (fluid.c:322)
-==8970==    by 0x12BE2E: main (fluid.c:65)
-==8970== 
-==8970== Conditional jump or move depends on uninitialised value(s)
-==8970==    at 0x12D93E: checkVelocity (fluid.c:668)
-==8970==    by 0x12D090: viscosity_impluses (fluid.c:508)
-==8970==    by 0x12C923: start_simulation (fluid.c:322)
-==8970==    by 0x12BE2E: main (fluid.c:65)
-==8970== 
-==8970== Conditional jump or move depends on uninitialised value(s)
-==8970==    at 0x12D964: checkVelocity (fluid.c:670)
-==8970==    by 0x12D090: viscosity_impluses (fluid.c:508)
-==8970==    by 0x12C923: start_simulation (fluid.c:322)
-==8970==    by 0x12BE2E: main (fluid.c:65)
-==8970== 
-==8970== Conditional jump or move depends on uninitialised value(s)
-==8970==    at 0x12D990: checkVelocity (fluid.c:672)
-==8970==    by 0x12D090: viscosity_impluses (fluid.c:508)
-==8970==    by 0x12C923: start_simulation (fluid.c:322)
-==8970==    by 0x12BE2E: main (fluid.c:65)
-==8970== 
-==8970== Conditional jump or move depends on uninitialised value(s)
-==8970==    at 0x129E7D: hash_halo (hash.c:99)
-==8970==    by 0x12CB4C: start_simulation (fluid.c:394)
-==8970==    by 0x12BE2E: main (fluid.c:65)
-==8970== 
-==8970== Conditional jump or move depends on uninitialised value(s)
-==8970==    at 0x129E7D: hash_halo (hash.c:99)
-==8970==    by 0x12CA85: start_simulation (fluid.c:369)
-==8970==    by 0x12BE2E: main (fluid.c:65)
-==8970== 
-==8970== Conditional jump or move depends on uninitialised value(s)
-==8970==    at 0x4AF383C: sqrt (w_sqrt_compat.c:35)
-==8970==    by 0x129EF3: hash_halo (hash.c:107)
-==8970==    by 0x12CA85: start_simulation (fluid.c:369)
-==8970==    by 0x12BE2E: main (fluid.c:65)
-==8970== 
-==8970== Conditional jump or move depends on uninitialised value(s)
-==8970==    at 0x12D3FF: calculate_density (fluid.c:580)
-==8970==    by 0x129F25: hash_halo (hash.c:109)
-==8970==    by 0x12CA85: start_simulation (fluid.c:369)
-==8970==    by 0x12BE2E: main (fluid.c:65)
-==8970== 
-==8970== 
-==8970== More than 10000000 total errors detected.  I'm not reporting any more.
-==8970== Final error counts will be inaccurate.  Go fix your program!
-==8970== Rerun with --error-limit=no to disable this cutoff.  Note
-==8970== that errors may occur in your program without prior warning from
-==8970== Valgrind, because errors are no longer being displayed.
-==8970== 
-[thetrick-linux:8970 :0:8970] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x14)
-==== backtrace (tid:   8970) ====
- 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2e4) [0x78dee14]
- 1  /lib/x86_64-linux-gnu/libucs.so.0(+0x25e79) [0x78e3e79]
- 2  /lib/x86_64-linux-gnu/libucs.so.0(+0x2603a) [0x78e403a]
- 3  /lib/x86_64-linux-gnu/libc.so.6(+0x3c4b0) [0x73144b0]
- 4  ./bin/sph.out(+0x24dee) [0x12cdee]
- 5  ./bin/sph.out(+0x24904) [0x12c904]
- 6  ./bin/sph.out(+0x23e2f) [0x12be2f]
- 7  /lib/x86_64-linux-gnu/libc.so.6(+0x23a90) [0x72fba90]
- 8  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x89) [0x72fbb49]
- 9  ./bin/sph.out(+0x3cc5) [0x10bcc5]
-=================================
-==8970== 
-==8970== Process terminating with default action of signal 11 (SIGSEGV)
-==8970==    at 0x7368FFB: __pthread_kill_implementation (pthread_kill.c:44)
-==8970==    by 0x7368FFB: __pthread_kill_internal (pthread_kill.c:78)
-==8970==    by 0x7368FFB: pthread_kill@@GLIBC_2.34 (pthread_kill.c:89)
-==8970==    by 0x7314405: raise (raise.c:26)
-==8970==    by 0x73144AF: ??? (in /usr/lib/x86_64-linux-gnu/libc.so.6)
-==8970==    by 0x12CDED: apply_gravity (fluid.c:456)
-==8970== 
-==8970== HEAP SUMMARY:
-==8970==     in use at exit: 36,178,576 bytes in 12,008 blocks
-==8970==   total heap usage: 66,157 allocs, 54,149 frees, 1,539,692,207 bytes allocated
-==8970== 
-==8970== LEAK SUMMARY:
-==8970==    definitely lost: 0 bytes in 0 blocks
-==8970==    indirectly lost: 0 bytes in 0 blocks
-==8970==      possibly lost: 46,884 bytes in 31 blocks
-==8970==    still reachable: 36,131,692 bytes in 11,977 blocks
-==8970==         suppressed: 0 bytes in 0 blocks
-==8970== Rerun with --leak-check=full to see details of leaked memory
-==8970== 
-==8970== Use --track-origins=yes to see where uninitialised values come from
-==8970== For lists of detected and suppressed errors, rerun with: -s
-==8970== ERROR SUMMARY: 10000000 errors from 54 contexts (suppressed: 0 from 0)
-
-===================================================================================
-=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
-=   PID 8970 RUNNING AT thetrick-linux
-=   EXIT CODE: 139
-=   CLEANING UP REMAINING PROCESSES
-=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
-===================================================================================
-YOUR APPLICATION TERMINATED WITH THE EXIT STRING: Segmentation fault (signal 11)
-This typically refers to a problem with your application.
-Please see the FAQ page for debugging suggestions

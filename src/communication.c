@@ -287,10 +287,10 @@ void transferOOBParticles(fluid_particle **fluid_particle_pointers, fluid_partic
     // Create indexed type to send
     MPI_Datatype LeftMovetype;
     MPI_Datatype RightMovetype;
-    int *blocklens_left = malloc(num_moving_left*sizeof(int));
-    int *blocklens_right = malloc(num_moving_right*sizeof(int));
-    int *indicies_left = malloc(num_moving_left*sizeof(int));
-    int *indicies_right = malloc(num_moving_right*sizeof(int));
+    int *blocklens_left = malloc(num_moving_left*sizeof(int)*2);
+    int *blocklens_right = malloc(num_moving_right*sizeof(int)*2);
+    int *indicies_left = malloc(num_moving_left*sizeof(int)*2);
+    int *indicies_right = malloc(num_moving_right*sizeof(int)*2);
 
     // Convert the OOB pointer into a particle array index using pointer arithmetic
     int index;

@@ -111,7 +111,7 @@ void start_simulation()
     #ifdef RASPI
     params.number_fluid_particles_global = 1500;
     #else
-    params.number_fluid_particles_global = 5000;
+    params.number_fluid_particles_global = 2000;
     #endif
 
     // Boundary box
@@ -226,11 +226,11 @@ void start_simulation()
         printf("Could not allocate hash\n");
 
     // Allocate edge index arrays
-    edges.edge_pointers_left = malloc(edges.max_edge_particles * sizeof(fluid_particle*));
-    edges.edge_pointers_right = malloc(edges.max_edge_particles * sizeof(fluid_particle*));
+    edges.edge_pointers_left = malloc(edges.max_edge_particles * sizeof(fluid_particle*)*2);
+    edges.edge_pointers_right = malloc(edges.max_edge_particles * sizeof(fluid_particle*)*2);
     // Allocate out of bound index arrays
-    out_of_bounds.oob_pointer_indicies_left = malloc(out_of_bounds.max_oob_particles * sizeof(int));
-    out_of_bounds.oob_pointer_indicies_right = malloc(out_of_bounds.max_oob_particles * sizeof(int));
+    out_of_bounds.oob_pointer_indicies_left = malloc(out_of_bounds.max_oob_particles * sizeof(int)*2);
+    out_of_bounds.oob_pointer_indicies_right = malloc(out_of_bounds.max_oob_particles * sizeof(int)*2);
     out_of_bounds.vacant_indicies = malloc(2*out_of_bounds.max_oob_particles * sizeof(int));
 
     printf("bytes allocated: %lu\n", total_bytes);
@@ -278,40 +278,54 @@ void start_simulation()
     int goal_local_particles = (params.number_fluid_particles_global/nprocs) * scale_factor;
     int particles_local_max = (params.number_fluid_particles_global/nprocs) * .95f;
 
-    params.number_fluid_particles_local = goal_local_particles;
+    //params.number_fluid_particles_local = goal_local_particles;
 
+    printf(" Main Sim Loop start for node at:%d with fp:%d gs: %f \n" , rank, params.number_fluid_particles_local, neighbor_grid.spacing);
 
     // Main simulation loop
     while(1) {
    
-        if (params.tunable_params.count_change != 0 && (params.number_fluid_particles_local + params.tunable_params.count_change < particles_local_max)){
+        // if (params.tunable_params.count_change != 0 && (params.number_fluid_particles_local + params.tunable_params.count_change < particles_local_max)){
 
-            if (params.tunable_params.count_change > 0 ){
+        //     if (params.tunable_params.count_change > 0 ){
 
-                int pointer_index;
-                fluid_particle *n;
+        //         int pointer_index;
+        //         fluid_particle *n;
+                
+        //         for(int i=0; i<params.tunable_params.count_change; i++)
+        //         {
+        //             pointer_index = params.number_fluid_particles_local + params.number_halo_particles + 1; 
 
-                for(int i=0; i<params.tunable_params.count_change; i++)
-                {
-                    pointer_index = params.number_fluid_particles_local + params.number_halo_particles + 1; 
+        //             n = fluid_particle_pointers[pointer_index]; 
 
-                    n = fluid_particle_pointers[pointer_index]; 
-
-                    params.number_fluid_particles_local++;
-
-                    //printf("p id : x %d : %f", n->id , n->x);
-
-                    n->x = (params.tunable_params.node_end_x - params.tunable_params.node_start_x)  / 2;
-                    n->y = boundary_global.max_y / 2;
-                }
+        //             n->x = (params.tunable_params.node_end_x - params.tunable_params.node_start_x)  / 2;
+        //             n->y = boundary_global.max_y / 2;
+        //             params.number_fluid_particles_local++;
+        //         }
  
-            }  else {
-                params.number_fluid_particles_local += params.tunable_params.count_change;
-            }      
-        }
+        //     }  else {
+        //         params.number_fluid_particles_local += params.tunable_params.count_change;
+        //         if (params.number_fluid_particles_local < 0){
+        //             params.number_fluid_particles_local = 0;
+        //         }
+        //     }      
+        // }
         params.tunable_params.count_change = 0;
 
- 
+        //printf("fp:%d hp:%d", params.number_fluid_particles_local  ,params.number_halo_particles);
+
+        for(i=0; i<(params.number_fluid_particles_local + params.number_halo_particles); i++) {
+            p = fluid_particle_pointers[i];
+            if (p == NULL){
+                printf(" null p at:%d fp:%d hp:%d", i, params.number_fluid_particles_local,  params.number_halo_particles);
+                continue;
+            } 
+
+            if (p->x < 0 || p->x > 15){
+                printf(" bad x: %f p loc at:%d ",p->x ,i );
+            }   
+    
+        }
   
         //printf("rank: %d goal_local : %d f_index %d local %d halo: %d\n", rank,goal_local_particles, params.max_fluid_particle_index, params.number_fluid_particles_local,params.number_halo_particles);
 
