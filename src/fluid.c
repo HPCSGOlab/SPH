@@ -97,6 +97,8 @@ void start_simulation()
     params.tunable_params.rest_density = 30.0f;
     params.tunable_params.mover_width = 2.0f;
     params.tunable_params.mover_height = 2.0f;
+    params.tunable_params.mover_center_x = 4.0f;
+    params.tunable_params.mover_center_y = 4.0f;
     params.tunable_params.mover_type = SPHERE_MOVER;
     params.tunable_params.count_change = 0;
 
@@ -111,7 +113,7 @@ void start_simulation()
     #ifdef RASPI
     params.number_fluid_particles_global = 1500;
     #else
-    params.number_fluid_particles_global = 2000;
+    params.number_fluid_particles_global = 2500;
     #endif
 
     // Boundary box
@@ -154,7 +156,7 @@ void start_simulation()
     // We also must take into account halo particles are placed onto the end of the max particle index
     // So this value can be even greater than the number of global
     // Before reaching this point the program should, but doesn't, intelligenly clean up fluid_particles
-    int max_fluid_particles_local = 2*params.number_fluid_particles_global;
+    int max_fluid_particles_local = 2 * params.number_fluid_particles_global;
 
     // Smoothing radius, h
     params.tunable_params.smoothing_radius = 2.0f*spacing_particle;
@@ -284,60 +286,18 @@ void start_simulation()
 
     // Main simulation loop
     while(1) {
-   
-        // if (params.tunable_params.count_change != 0 && (params.number_fluid_particles_local + params.tunable_params.count_change < particles_local_max)){
 
-        //     if (params.tunable_params.count_change > 0 ){
-
-        //         int pointer_index;
-        //         fluid_particle *n;
-                
-        //         for(int i=0; i<params.tunable_params.count_change; i++)
-        //         {
-        //             pointer_index = params.number_fluid_particles_local + params.number_halo_particles + 1; 
-
-        //             n = fluid_particle_pointers[pointer_index]; 
-
-        //             n->x = (params.tunable_params.node_end_x - params.tunable_params.node_start_x)  / 2;
-        //             n->y = boundary_global.max_y / 2;
-        //             params.number_fluid_particles_local++;
-        //         }
- 
-        //     }  else {
-        //         params.number_fluid_particles_local += params.tunable_params.count_change;
-        //         if (params.number_fluid_particles_local < 0){
-        //             params.number_fluid_particles_local = 0;
-        //         }
-        //     }      
-        // }
-        params.tunable_params.count_change = 0;
-
-        //printf("fp:%d hp:%d", params.number_fluid_particles_local  ,params.number_halo_particles);
-
-        for(i=0; i<(params.number_fluid_particles_local + params.number_halo_particles); i++) {
-            p = fluid_particle_pointers[i];
-            if (p == NULL){
-                printf(" null p at:%d fp:%d hp:%d", i, params.number_fluid_particles_local,  params.number_halo_particles);
-                continue;
-            } 
-
-            if (p->x < 0 || p->x > 15){
-                printf(" bad x: %f p loc at:%d ",p->x ,i );
-            }   
-    
-        }
-  
-        //printf("rank: %d goal_local : %d f_index %d local %d halo: %d\n", rank,goal_local_particles, params.max_fluid_particle_index, params.number_fluid_particles_local,params.number_halo_particles);
+        add_points(fluid_particle_pointers, fluid_particles, &params, particles_local_max, &boundary_global);
+        
+        //check_points(fluid_particle_pointers, &params);
 
         // Initialize velocities
         apply_gravity(fluid_particle_pointers, &params);
-
         // Viscosity impluse
         viscosity_impluses(fluid_particle_pointers, neighbors, &params);
-
+        
         // Advance to predicted position and set OOB particles
         predict_positions(fluid_particle_pointers, &boundary_global, &params);
-
         // Make sure that async send to render node is complete
         if(sub_step == 0)
         {
@@ -365,7 +325,7 @@ void start_simulation()
 
         if(params.tunable_params.kill_sim)
             break;
-
+        
         // Identify out of bounds particles and send them to appropriate rank
         identify_oob_particles(fluid_particle_pointers, fluid_particles, &out_of_bounds, &boundary_global, &params);
 
@@ -377,7 +337,7 @@ void start_simulation()
          // Exchange halo particles
         startHaloExchange(fluid_particle_pointers,fluid_particles, &edges, &params);
         finishHaloExchange(fluid_particle_pointers,fluid_particles, &edges, &params);
-
+             
         // Add the halo particles to neighbor buckets
         // Also update density
         hash_halo(fluid_particle_pointers, &neighbor_grid, &params, true);
@@ -425,7 +385,7 @@ void start_simulation()
             
 
         }
-
+  
 
 
         if(sub_step == steps_per_frame-1)
@@ -575,9 +535,9 @@ void predict_positions(fluid_particle **fluid_particle_pointers, AABB_t *boundar
 
     for(i=0; i<params->number_fluid_particles_local; i++) {
         p = fluid_particle_pointers[i];
-	p->x_prev = p->x;
+	    p->x_prev = p->x;
         p->y_prev = p->y;
-	p->x += (p->v_x * dt);
+	    p->x += (p->v_x * dt);
         p->y += (p->v_y * dt);
 
 	// Enforce boundary conditions
@@ -828,4 +788,71 @@ void initParticles(fluid_particle **fluid_particle_pointers, fluid_particle *flu
         fluid_particle_pointers[i]->v_x = 0.0f;
         fluid_particle_pointers[i]->v_y = 0.0f;
     }
+}
+
+void check_points(fluid_particle **fluid_particle_pointers, param *params)
+{
+    int i;
+    fluid_particle *p;
+    for(i=0; i<(params->number_fluid_particles_local + params->number_halo_particles); i++) {
+        p = fluid_particle_pointers[i];
+        if (p == NULL){
+            printf(" null p at:%d fp:%d hp:%d", i, params->number_fluid_particles_local,  params->number_halo_particles);
+            continue;
+        } 
+
+        if (p->x < 0 || p->x > 15){
+            printf(" bad x: %f p loc at:%d ",p->x ,i );
+        }   
+
+    }
+}
+
+void add_points(fluid_particle **fluid_particle_pointers, fluid_particle *fluid_particles,param *params, int particles_local_max, AABB_t *boundary_global)
+{
+    if (params->tunable_params.count_change != 0 && (params->number_fluid_particles_local + params->tunable_params.count_change < particles_local_max)){
+
+        if (params->tunable_params.count_change > 0 ){
+
+            int pointer_index;
+            fluid_particle *n;
+
+            int last_fp = params->number_fluid_particles_local;
+            
+            for(int i=0; i<params->tunable_params.count_change; i++)
+            {
+                pointer_index = last_fp + params->number_halo_particles + i + 1;
+                //printf("pointer_index %d \n",pointer_index) ;
+
+                n = &fluid_particles[pointer_index];
+
+                n->x = (params->tunable_params.node_end_x - params->tunable_params.node_start_x)  / 2;
+                n->y = boundary_global->max_y / 2;
+
+                n->x_prev  = 0;
+                n->y_prev = 0;
+                n->v_x = 0.0f;
+                n->v_y = 0.0f;
+                n->a_x = 0.0f;
+                n->a_y = 0.0f;
+                n->density = 0.0f;
+                n->density_near = 0.0f;
+                n->pressure = 0.0f;
+                n->pressure_near = 0.0f;
+                n->id = pointer_index;
+
+                fluid_particle_pointers[pointer_index] = n; 
+
+                params->number_fluid_particles_local++;
+            }
+            params->max_fluid_particle_index = pointer_index;
+
+        }  else {
+            params->number_fluid_particles_local += params->tunable_params.count_change;
+            if (params->number_fluid_particles_local < 0){
+                params->number_fluid_particles_local = 0;
+            }
+        }      
+    }
+    params->tunable_params.count_change = 0;
 }
