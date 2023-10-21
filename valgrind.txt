@@ -1,408 +1,292 @@
-Rank 1 start_x: 7.295172, end_x :15.000000
-Rank 0 start_x: 0.000000, end_x :7.295172
-initial number of particles 990
-initial number of particles 990
-smoothing radius: 0.503115
-smoothing radius: 0.503115
-grid x: 30 grid y 17
-bytes allocated: 328960
-rank 1 max fluid x: 14.841901
-grid x: 30 grid y 17
-Rank: 1, fluid_particles: 990, smoothing radius: 0.503115 
-bytes allocated: 328960
-rank 0 max fluid x: 7.295172
-Rank: 0, fluid_particles: 990, smoothing radius: 0.503115 
- Main Sim Loop start for node at:0 with fp:990 gs: 0.503115 
- Main Sim Loop start for node at:1 with fp:990 gs: 0.503115 
-==30595== Conditional jump or move depends on uninitialised value(s)
-==30596== Conditional jump or move depends on uninitialised value(s)
-==30595==    at 0x12DD00: boundaryConditions (fluid.c:737)
-==30595==    by 0x12D4F9: predict_positions (fluid.c:584)
-==30596==    at 0x12DD00: boundaryConditions (fluid.c:737)
-==30596==    by 0x12D4F9: predict_positions (fluid.c:584)
-==30595==    by 0x12CA8D: start_simulation (fluid.c:339)
-==30595==    by 0x12BF63: main (fluid.c:65)
-==30595== 
-==30596==    by 0x12CA8D: start_simulation (fluid.c:339)
-==30596==    by 0x12BF63: main (fluid.c:65)
-==30596== 
-==30595== Conditional jump or move depends on uninitialised value(s)
-==30595==    at 0x12DD12: boundaryConditions (fluid.c:737)
-==30595==    by 0x12D4F9: predict_positions (fluid.c:584)
-==30595==    by 0x12CA8D: start_simulation (fluid.c:339)
-==30595==    by 0x12BF63: main (fluid.c:65)
-==30595== 
-==30595== Conditional jump or move depends on uninitialised value(s)
-==30595==    at 0x4AF387C: sqrt (w_sqrt_compat.c:35)
-==30595==    by 0x12DD2F: boundaryConditions (fluid.c:738)
-==30595==    by 0x12D4F9: predict_positions (fluid.c:584)
-==30595==    by 0x12CA8D: start_simulation (fluid.c:339)
-==30595==    by 0x12BF63: main (fluid.c:65)
-==30595== 
-==30595== Conditional jump or move depends on uninitialised value(s)
-==30595==    at 0x12DF2A: boundaryConditions (fluid.c:795)
-==30595==    by 0x12D4F9: predict_positions (fluid.c:584)
-==30595==    by 0x12CA8D: start_simulation (fluid.c:339)
-==30595==    by 0x12BF63: main (fluid.c:65)
-==30595== 
-==30595== Conditional jump or move depends on uninitialised value(s)
-==30595==    at 0x12DF54: boundaryConditions (fluid.c:798)
-==30595==    by 0x12D4F9: predict_positions (fluid.c:584)
-==30595==    by 0x12CA8D: start_simulation (fluid.c:339)
-==30595==    by 0x12BF63: main (fluid.c:65)
-==30595== 
-==30595== Conditional jump or move depends on uninitialised value(s)
-==30595==    at 0x12DF89: boundaryConditions (fluid.c:801)
-==30595==    by 0x12D4F9: predict_positions (fluid.c:584)
-==30595==    by 0x12CA8D: start_simulation (fluid.c:339)
-==30595==    by 0x12BF63: main (fluid.c:65)
-==30595== 
-==30595== Conditional jump or move depends on uninitialised value(s)
-==30595==    at 0x12DFB4: boundaryConditions (fluid.c:804)
-==30595==    by 0x12D4F9: predict_positions (fluid.c:584)
-==30595==    by 0x12CA8D: start_simulation (fluid.c:339)
-==30595==    by 0x12BF63: main (fluid.c:65)
-==30595== 
-==30595== Conditional jump or move depends on uninitialised value(s)
-==30595==    at 0x12D391: identify_oob_particles (fluid.c:557)
-==30595==    by 0x12CB49: start_simulation (fluid.c:370)
-==30595==    by 0x12BF63: main (fluid.c:65)
-==30595== 
-==30595== Conditional jump or move depends on uninitialised value(s)
-==30595==    at 0x12D3D2: identify_oob_particles (fluid.c:559)
-==30595==    by 0x12CB49: start_simulation (fluid.c:370)
-==30595==    by 0x12BF63: main (fluid.c:65)
-==30595== 
-==30595== Conditional jump or move depends on uninitialised value(s)
-==30595==    at 0x12A1EA: hash_fluid (hash.c:161)
-==30595==    by 0x12CB6B: start_simulation (fluid.c:375)
-==30595==    by 0x12BF63: main (fluid.c:65)
-==30595== 
-==30595== Use of uninitialised value of size 8
-==30595==    at 0x12A219: hash_fluid (hash.c:166)
-==30595==    by 0x12CB6B: start_simulation (fluid.c:375)
-==30595==    by 0x12BF63: main (fluid.c:65)
-==30595== 
-==30595== Use of uninitialised value of size 8
-==30595==    at 0x12A232: hash_fluid (hash.c:167)
-==30595==    by 0x12CB6B: start_simulation (fluid.c:375)
-==30595==    by 0x12BF63: main (fluid.c:65)
-==30595== 
-==30595== Use of uninitialised value of size 8
-==30595==    at 0x12A246: hash_fluid (hash.c:167)
-==30595==    by 0x12CB6B: start_simulation (fluid.c:375)
-==30595==    by 0x12BF63: main (fluid.c:65)
-==30595== 
-==30595== Use of uninitialised value of size 8
-==30595==    at 0x12A26A: hash_fluid (hash.c:168)
-==30595==    by 0x12CB6B: start_simulation (fluid.c:375)
-==30595==    by 0x12BF63: main (fluid.c:65)
-==30595== 
-==30595== Conditional jump or move depends on uninitialised value(s)
-==30595==    at 0x12A640: hash_fluid (hash.c:227)
-==30595==    by 0x12CB6B: start_simulation (fluid.c:375)
-==30595==    by 0x12BF63: main (fluid.c:65)
-==30595== 
-==30595== Conditional jump or move depends on uninitialised value(s)
-==30595==    at 0x12A3CC: hash_fluid (hash.c:191)
-==30595==    by 0x12CB6B: start_simulation (fluid.c:375)
-==30595==    by 0x12BF63: main (fluid.c:65)
-==30595== 
-==30595== Conditional jump or move depends on uninitialised value(s)
-==30595==    at 0x4AF387C: sqrt (w_sqrt_compat.c:35)
-==30595==    by 0x12A427: hash_fluid (hash.c:197)
-==30595==    by 0x12CB6B: start_simulation (fluid.c:375)
-==30595==    by 0x12BF63: main (fluid.c:65)
-==30595== 
-==30595== Conditional jump or move depends on uninitialised value(s)
-==30595==    at 0x12D559: calculate_density (fluid.c:594)
-==30595==    by 0x12A459: hash_fluid (hash.c:199)
-==30595==    by 0x12CB6B: start_simulation (fluid.c:375)
-==30595==    by 0x12BF63: main (fluid.c:65)
-==30595== 
-==30595== Conditional jump or move depends on uninitialised value(s)
-==30595==    at 0x4AF387C: sqrt (w_sqrt_compat.c:35)
-==30595==    by 0x12A69B: hash_fluid (hash.c:232)
-==30595==    by 0x12CB6B: start_simulation (fluid.c:375)
-==30595==    by 0x12BF63: main (fluid.c:65)
-==30595== 
-==30595== Conditional jump or move depends on uninitialised value(s)
-==30595==    at 0x12D559: calculate_density (fluid.c:594)
-==30595==    by 0x12A6CD: hash_fluid (hash.c:234)
-==30595==    by 0x12CB6B: start_simulation (fluid.c:375)
-==30595==    by 0x12BF63: main (fluid.c:65)
-==30595== 
-==30595== Conditional jump or move depends on uninitialised value(s)
-==30595==    at 0x12AC1B: startHaloExchange (communication.c:148)
-==30595==    by 0x12CB8C: start_simulation (fluid.c:378)
-==30595==    by 0x12BF63: main (fluid.c:65)
-==30595== 
-==30595== Conditional jump or move depends on uninitialised value(s)
-==30595==    at 0x12AC76: startHaloExchange (communication.c:150)
-==30595==    by 0x12CB8C: start_simulation (fluid.c:378)
-==30595==    by 0x12BF63: main (fluid.c:65)
-==30595== 
-==30595== Conditional jump or move depends on uninitialised value(s)
-==30595==    at 0x4AF387C: sqrt (w_sqrt_compat.c:35)
-==30595==    by 0x12D7EF: double_density_relaxation (fluid.c:640)
-==30595==    by 0x12CBEF: start_simulation (fluid.c:387)
-==30595==    by 0x12BF63: main (fluid.c:65)
-==30595== 
-==30595== Conditional jump or move depends on uninitialised value(s)
-==30595==    at 0x12D838: double_density_relaxation (fluid.c:646)
-==30595==    by 0x12CBEF: start_simulation (fluid.c:387)
-==30595==    by 0x12BF63: main (fluid.c:65)
-==30595== 
-==30595== Conditional jump or move depends on uninitialised value(s)
-==30595==    at 0x12D882: double_density_relaxation (fluid.c:651)
-==30595==    by 0x12CBEF: start_simulation (fluid.c:387)
-==30595==    by 0x12BF63: main (fluid.c:65)
-==30595== 
-==30595== Conditional jump or move depends on uninitialised value(s)
-==30595==    at 0x12D894: double_density_relaxation (fluid.c:651)
-==30595==    by 0x12CBEF: start_simulation (fluid.c:387)
-==30595==    by 0x12BF63: main (fluid.c:65)
-==30595== 
-==30596== Conditional jump or move depends on uninitialised value(s)
-==30596==    at 0x12DD00: boundaryConditions (fluid.c:737)
-==30596==    by 0x12DC1E: updateVelocities (fluid.c:712)
-==30596==    by 0x12CC10: start_simulation (fluid.c:390)
-==30596==    by 0x12BF63: main (fluid.c:65)
-==30596== 
-==30595== Conditional jump or move depends on uninitialised value(s)
-==30595==    at 0x12DD00: boundaryConditions (fluid.c:737)
-==30595==    by 0x12DC1E: updateVelocities (fluid.c:712)
-==30595==    by 0x12CC10: start_simulation (fluid.c:390)
-==30595==    by 0x12BF63: main (fluid.c:65)
-==30595== 
-==30595== Conditional jump or move depends on uninitialised value(s)
-==30595==    at 0x12DD12: boundaryConditions (fluid.c:737)
-==30595==    by 0x12DC1E: updateVelocities (fluid.c:712)
-==30595==    by 0x12CC10: start_simulation (fluid.c:390)
-==30595==    by 0x12BF63: main (fluid.c:65)
-==30595== 
-==30595== Conditional jump or move depends on uninitialised value(s)
-==30595==    at 0x12DF2A: boundaryConditions (fluid.c:795)
-==30595==    by 0x12DC1E: updateVelocities (fluid.c:712)
-==30595==    by 0x12CC10: start_simulation (fluid.c:390)
-==30595==    by 0x12BF63: main (fluid.c:65)
-==30595== 
-==30595== Conditional jump or move depends on uninitialised value(s)
-==30595==    at 0x12DF54: boundaryConditions (fluid.c:798)
-==30595==    by 0x12DC1E: updateVelocities (fluid.c:712)
-==30595==    by 0x12CC10: start_simulation (fluid.c:390)
-==30595==    by 0x12BF63: main (fluid.c:65)
-==30595== 
-==30595== Conditional jump or move depends on uninitialised value(s)
-==30595==    at 0x12DA75: checkVelocity (fluid.c:680)
-==30595==    by 0x12DB94: updateVelocity (fluid.c:698)
-==30595==    by 0x12DC31: updateVelocities (fluid.c:713)
-==30595==    by 0x12CC10: start_simulation (fluid.c:390)
-==30595==    by 0x12BF63: main (fluid.c:65)
-==30595== 
-==30595== Conditional jump or move depends on uninitialised value(s)
-==30595==    at 0x12DAA1: checkVelocity (fluid.c:682)
-==30595==    by 0x12DB94: updateVelocity (fluid.c:698)
-==30595==    by 0x12DC31: updateVelocities (fluid.c:713)
-==30595==    by 0x12CC10: start_simulation (fluid.c:390)
-==30595==    by 0x12BF63: main (fluid.c:65)
-==30595== 
-==30595== Conditional jump or move depends on uninitialised value(s)
-==30595==    at 0x12DF89: boundaryConditions (fluid.c:801)
-==30595==    by 0x12DC1E: updateVelocities (fluid.c:712)
-==30595==    by 0x12CC10: start_simulation (fluid.c:390)
-==30595==    by 0x12BF63: main (fluid.c:65)
-==30595== 
-==30595== Conditional jump or move depends on uninitialised value(s)
-==30595==    at 0x4AF387C: sqrt (w_sqrt_compat.c:35)
-==30595==    by 0x12DD2F: boundaryConditions (fluid.c:738)
-==30595==    by 0x12DC1E: updateVelocities (fluid.c:712)
-==30595==    by 0x12CC10: start_simulation (fluid.c:390)
-==30595==    by 0x12BF63: main (fluid.c:65)
-==30595== 
-==30595== Conditional jump or move depends on uninitialised value(s)
-==30595==    at 0x12DFB4: boundaryConditions (fluid.c:804)
-==30595==    by 0x12DC1E: updateVelocities (fluid.c:712)
-==30595==    by 0x12CC10: start_simulation (fluid.c:390)
-==30595==    by 0x12BF63: main (fluid.c:65)
-==30595== 
-==30595== Conditional jump or move depends on uninitialised value(s)
-==30595==    at 0x12DAC7: checkVelocity (fluid.c:684)
-==30595==    by 0x12DB94: updateVelocity (fluid.c:698)
-==30595==    by 0x12DC31: updateVelocities (fluid.c:713)
-==30595==    by 0x12CC10: start_simulation (fluid.c:390)
-==30595==    by 0x12BF63: main (fluid.c:65)
-==30595== 
-==30595== Conditional jump or move depends on uninitialised value(s)
-==30595==    at 0x12DAF3: checkVelocity (fluid.c:686)
-==30595==    by 0x12DB94: updateVelocity (fluid.c:698)
-==30595==    by 0x12DC31: updateVelocities (fluid.c:713)
-==30595==    by 0x12CC10: start_simulation (fluid.c:390)
-==30595==    by 0x12BF63: main (fluid.c:65)
-==30595== 
-==30595== Conditional jump or move depends on uninitialised value(s)
-==30595==    at 0x12AC1B: startHaloExchange (communication.c:148)
-==30595==    by 0x12CC31: start_simulation (fluid.c:397)
-==30595==    by 0x12BF63: main (fluid.c:65)
-==30595== 
-==30595== Conditional jump or move depends on uninitialised value(s)
-==30595==    at 0x12AC76: startHaloExchange (communication.c:150)
-==30595==    by 0x12CC31: start_simulation (fluid.c:397)
-==30595==    by 0x12BF63: main (fluid.c:65)
-==30595== 
-==30595== Conditional jump or move depends on uninitialised value(s)
-==30595==    at 0x12A1EA: hash_fluid (hash.c:161)
-==30595==    by 0x12CC53: start_simulation (fluid.c:401)
-==30595==    by 0x12BF63: main (fluid.c:65)
-==30595== 
-==30595== Use of uninitialised value of size 8
-==30595==    at 0x12A219: hash_fluid (hash.c:166)
-==30595==    by 0x12CC53: start_simulation (fluid.c:401)
-==30595==    by 0x12BF63: main (fluid.c:65)
-==30595== 
-==30595== Use of uninitialised value of size 8
-==30595==    at 0x12A232: hash_fluid (hash.c:167)
-==30595==    by 0x12CC53: start_simulation (fluid.c:401)
-==30595==    by 0x12BF63: main (fluid.c:65)
-==30595== 
-==30595== Use of uninitialised value of size 8
-==30595==    at 0x12A246: hash_fluid (hash.c:167)
-==30595==    by 0x12CC53: start_simulation (fluid.c:401)
-==30595==    by 0x12BF63: main (fluid.c:65)
-==30595== 
-==30595== Use of uninitialised value of size 8
-==30595==    at 0x12A26A: hash_fluid (hash.c:168)
-==30595==    by 0x12CC53: start_simulation (fluid.c:401)
-==30595==    by 0x12BF63: main (fluid.c:65)
-==30595== 
-==30595== Conditional jump or move depends on uninitialised value(s)
-==30595==    at 0x12A640: hash_fluid (hash.c:227)
-==30595==    by 0x12CC53: start_simulation (fluid.c:401)
-==30595==    by 0x12BF63: main (fluid.c:65)
-==30595== 
-==30595== Conditional jump or move depends on uninitialised value(s)
-==30595==    at 0x12A3CC: hash_fluid (hash.c:191)
-==30595==    by 0x12CC53: start_simulation (fluid.c:401)
-==30595==    by 0x12BF63: main (fluid.c:65)
-==30595== 
-==30595== Conditional jump or move depends on uninitialised value(s)
-==30595==    at 0x4AF387C: sqrt (w_sqrt_compat.c:35)
-==30595==    by 0x12D0EA: viscosity_impluses (fluid.c:507)
-==30595==    by 0x12CA6D: start_simulation (fluid.c:336)
-==30595==    by 0x12BF63: main (fluid.c:65)
-==30595== 
-==30595== Conditional jump or move depends on uninitialised value(s)
-==30595==    at 0x12D16C: viscosity_impluses (fluid.c:514)
-==30595==    by 0x12CA6D: start_simulation (fluid.c:336)
-==30595==    by 0x12BF63: main (fluid.c:65)
-==30595== 
-==30595== Conditional jump or move depends on uninitialised value(s)
-==30595==    at 0x12DA75: checkVelocity (fluid.c:680)
-==30595==    by 0x12D1EA: viscosity_impluses (fluid.c:522)
-==30595==    by 0x12CA6D: start_simulation (fluid.c:336)
-==30595==    by 0x12BF63: main (fluid.c:65)
-==30595== 
-==30595== Conditional jump or move depends on uninitialised value(s)
-==30595==    at 0x12DAA1: checkVelocity (fluid.c:682)
-==30595==    by 0x12D1EA: viscosity_impluses (fluid.c:522)
-==30595==    by 0x12CA6D: start_simulation (fluid.c:336)
-==30595==    by 0x12BF63: main (fluid.c:65)
-==30595== 
-==30595== Conditional jump or move depends on uninitialised value(s)
-==30595==    at 0x12DAC7: checkVelocity (fluid.c:684)
-==30595==    by 0x12D1EA: viscosity_impluses (fluid.c:522)
-==30595==    by 0x12CA6D: start_simulation (fluid.c:336)
-==30595==    by 0x12BF63: main (fluid.c:65)
-==30595== 
-==30595== Conditional jump or move depends on uninitialised value(s)
-==30595==    at 0x12DAF3: checkVelocity (fluid.c:686)
-==30595==    by 0x12D1EA: viscosity_impluses (fluid.c:522)
-==30595==    by 0x12CA6D: start_simulation (fluid.c:336)
-==30595==    by 0x12BF63: main (fluid.c:65)
-==30595== 
-==30595== Conditional jump or move depends on uninitialised value(s)
-==30595==    at 0x129F80: hash_halo (hash.c:99)
-==30595==    by 0x12CC96: start_simulation (fluid.c:408)
-==30595==    by 0x12BF63: main (fluid.c:65)
-==30595== 
-==30595== Conditional jump or move depends on uninitialised value(s)
-==30595==    at 0x129F80: hash_halo (hash.c:99)
-==30595==    by 0x12CBCF: start_simulation (fluid.c:383)
-==30595==    by 0x12BF63: main (fluid.c:65)
-==30595== 
-==30595== Conditional jump or move depends on uninitialised value(s)
-==30595==    at 0x4AF387C: sqrt (w_sqrt_compat.c:35)
-==30595==    by 0x129FF6: hash_halo (hash.c:108)
-==30595==    by 0x12CBCF: start_simulation (fluid.c:383)
-==30595==    by 0x12BF63: main (fluid.c:65)
-==30595== 
-==30595== Conditional jump or move depends on uninitialised value(s)
-==30595==    at 0x12D559: calculate_density (fluid.c:594)
-==30595==    by 0x12A028: hash_halo (hash.c:110)
-==30595==    by 0x12CBCF: start_simulation (fluid.c:383)
-==30595==    by 0x12BF63: main (fluid.c:65)
-==30595== 
-==30595== 
-==30595== More than 10000000 total errors detected.  I'm not reporting any more.
-==30595== Final error counts will be inaccurate.  Go fix your program!
-==30595== Rerun with --error-limit=no to disable this cutoff.  Note
-==30595== that errors may occur in your program without prior warning from
-==30595== Valgrind, because errors are no longer being displayed.
-==30595== 
-close
-[WARNING] yaksa: 2 leaked handle pool objects
-==30596== Syscall param exit_group(status) contains uninitialised byte(s)
-==30596==    at 0x73BA24D: _Exit (_exit.c:30)
-==30596==    by 0x7316B56: __run_exit_handlers (exit.c:134)
-==30596==    by 0x7316CCF: exit (exit.c:141)
-==30596==    by 0x72FBA96: (below main) (libc_start_call_main.h:74)
-==30596== 
-==30595== 
-==30595== HEAP SUMMARY:
-==30595==     in use at exit: 738,974 bytes in 8,763 blocks
-==30595==   total heap usage: 80,519 allocs, 71,756 frees, 1,460,161,459 bytes allocated
-==30595== 
-==30596== 
-==30596== HEAP SUMMARY:
-==30596==     in use at exit: 738,254 bytes in 8,761 blocks
-==30596==   total heap usage: 80,465 allocs, 71,704 frees, 1,460,054,464 bytes allocated
-==30596== 
-==30595== LEAK SUMMARY:
-==30595==    definitely lost: 136 bytes in 1 blocks
-==30595==    indirectly lost: 637,713 bytes in 8,689 blocks
-==30595==      possibly lost: 0 bytes in 0 blocks
-==30595==    still reachable: 101,125 bytes in 73 blocks
-==30595==         suppressed: 0 bytes in 0 blocks
-==30595== Rerun with --leak-check=full to see details of leaked memory
-==30595== 
-==30595== Use --track-origins=yes to see where uninitialised values come from
-==30595== For lists of detected and suppressed errors, rerun with: -s
-==30595== ERROR SUMMARY: 10000000 errors from 56 contexts (suppressed: 0 from 0)
-==30596== LEAK SUMMARY:
-==30596==    definitely lost: 136 bytes in 1 blocks
-==30596==    indirectly lost: 637,713 bytes in 8,689 blocks
-==30596==      possibly lost: 0 bytes in 0 blocks
-==30596==    still reachable: 100,405 bytes in 71 blocks
-==30596==         suppressed: 0 bytes in 0 blocks
-==30596== Rerun with --leak-check=full to see details of leaked memory
-==30596== 
-==30596== Use --track-origins=yes to see where uninitialised values come from
-==30596== For lists of detected and suppressed errors, rerun with: -s
-==30596== ERROR SUMMARY: 6935 errors from 3 contexts (suppressed: 0 from 0)
-==30594== 
-==30594== HEAP SUMMARY:
-==30594==     in use at exit: 1,034,264 bytes in 12,210 blocks
-==30594==   total heap usage: 121,834 allocs, 109,624 frees, 1,626,293,154 bytes allocated
-==30594== 
-==30594== LEAK SUMMARY:
-==30594==    definitely lost: 656 bytes in 4 blocks
-==30594==    indirectly lost: 27,909 bytes in 85 blocks
-==30594==      possibly lost: 56 bytes in 1 blocks
-==30594==    still reachable: 1,005,643 bytes in 12,120 blocks
-==30594==         suppressed: 0 bytes in 0 blocks
-==30594== Rerun with --leak-check=full to see details of leaked memory
-==30594== 
-==30594== For lists of detected and suppressed errors, rerun with: -s
-==30594== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+Main Sim Loop start for node at:3 with fp:592 gs: 0.450000 
+ Main Sim Loop start for node at:0 with fp:629 gs: 0.450000 
+ Main Sim Loop start for node at:1 with fp:629 gs: 0.450000 
+ Main Sim Loop start for node at:2 with fp:629 gs: 0.450000 
+==32332== Invalid write of size 1
+==32332==    at 0x786B767: ucp_tag_recv_nbx (in /usr/lib/x86_64-linux-gnu/libucp.so.0.0.0)
+==32332==    by 0x6EF40F0: ??? (in /usr/lib/x86_64-linux-gnu/libmpich.so.12.2.2)
+==32332==    by 0x4CC2C4D: PMPI_Irecv (in /usr/lib/x86_64-linux-gnu/libmpich.so.12.2.2)
+==32332==    by 0x1278F4: start_renderer (renderer.c:287)
+==32332==    by 0x10BCB9: main (fluid.c:63)
+==32332==  Address 0xc20445c is 0 bytes after a block of size 9,916 alloc'd
+==32332==    at 0x4843828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==32332==    by 0x127440: start_renderer (renderer.c:162)
+==32332==    by 0x10BCB9: main (fluid.c:63)
+==32332== 
+==32332== Invalid read of size 2
+==32332==    at 0x127C33: start_renderer (renderer.c:359)
+==32332==    by 0x10BCB9: main (fluid.c:63)
+==32332==  Address 0xc20445c is 0 bytes after a block of size 9,916 alloc'd
+==32332==    at 0x4843828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==32332==    by 0x127440: start_renderer (renderer.c:162)
+==32332==    by 0x10BCB9: main (fluid.c:63)
+==32332== 
+==32332== Invalid read of size 2
+==32332==    at 0x127C4B: start_renderer (renderer.c:360)
+==32332==    by 0x10BCB9: main (fluid.c:63)
+==32332==  Address 0xc20445e is 2 bytes after a block of size 9,916 alloc'd
+==32332==    at 0x4843828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==32332==    by 0x127440: start_renderer (renderer.c:162)
+==32332==    by 0x10BCB9: main (fluid.c:63)
+==32332== 
+==32332== Invalid write of size 8
+==32332==    at 0x127C71: start_renderer (renderer.c:359)
+==32332==    by 0x10BCB9: main (fluid.c:63)
+==32332==  Address 0xc21064c is 0 bytes after a block of size 49,580 alloc'd
+==32332==    at 0x4843828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==32332==    by 0x127452: start_renderer (renderer.c:166)
+==32332==    by 0x10BCB9: main (fluid.c:63)
+==32332== 
+==32332== Invalid write of size 4
+==32332==    at 0x127C7D: start_renderer (renderer.c:363)
+==32332==    by 0x10BCB9: main (fluid.c:63)
+==32332==  Address 0xc21065c is 16 bytes after a block of size 49,580 alloc'd
+==32332==    at 0x4843828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==32332==    by 0x127452: start_renderer (renderer.c:166)
+==32332==    by 0x10BCB9: main (fluid.c:63)
+==32332== 
+==32332== Invalid read of size 8
+==32332==    at 0x484DA27: memmove (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==32332==    by 0xEB6B4B5: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+==32332==    by 0xE79A3CE: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+==32332==    by 0xE79AAF4: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+==32332==    by 0xE79FAD1: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+==32332==    by 0x10CF7F: render_particles (particles_gl.c:62)
+==32332==    by 0x127CFC: start_renderer (renderer.c:366)
+==32332==    by 0x10BCB9: main (fluid.c:63)
+==32332==  Address 0xc210650 is 4 bytes after a block of size 49,580 alloc'd
+==32332==    at 0x4843828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==32332==    by 0x127452: start_renderer (renderer.c:166)
+==32332==    by 0x10BCB9: main (fluid.c:63)
+==32332== 
+==32332== Invalid read of size 8
+==32332==    at 0x484DA2F: memmove (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==32332==    by 0xEB6B4B5: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+==32332==    by 0xE79A3CE: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+==32332==    by 0xE79AAF4: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+==32332==    by 0xE79FAD1: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+==32332==    by 0x10CF7F: render_particles (particles_gl.c:62)
+==32332==    by 0x127CFC: start_renderer (renderer.c:366)
+==32332==    by 0x10BCB9: main (fluid.c:63)
+==32332==  Address 0xc210658 is 12 bytes after a block of size 49,580 alloc'd
+==32332==    at 0x4843828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==32332==    by 0x127452: start_renderer (renderer.c:166)
+==32332==    by 0x10BCB9: main (fluid.c:63)
+==32332== 
+==32332== Invalid read of size 8
+==32332==    at 0x484DA14: memmove (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==32332==    by 0xEB6B4B5: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+==32332==    by 0xE79A3CE: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+==32332==    by 0xE79AAF4: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+==32332==    by 0xE79FAD1: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+==32332==    by 0x10CF7F: render_particles (particles_gl.c:62)
+==32332==    by 0x127CFC: start_renderer (renderer.c:366)
+==32332==    by 0x10BCB9: main (fluid.c:63)
+==32332==  Address 0xc210660 is 20 bytes after a block of size 49,580 alloc'd
+==32332==    at 0x4843828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==32332==    by 0x127452: start_renderer (renderer.c:166)
+==32332==    by 0x10BCB9: main (fluid.c:63)
+==32332== 
+
+valgrind: m_mallocfree.c:303 (get_bszB_as_is): Assertion 'bszB_lo == bszB_hi' failed.
+valgrind: Heap block lo/hi size mismatch: lo = 49648, hi = 1053609178.
+This is probably caused by your program erroneously writing past the
+end of a heap block and corrupting heap metadata.  If you fix any
+invalid writes reported by Memcheck, this assertion failure will
+probably go away.  Please try that before reporting this as a bug.
+
+
+host stacktrace:
+==32332==    at 0x58042F9A: ??? (in /usr/libexec/valgrind/memcheck-amd64-linux)
+==32332==    by 0x580430C7: ??? (in /usr/libexec/valgrind/memcheck-amd64-linux)
+==32332==    by 0x5804326B: ??? (in /usr/libexec/valgrind/memcheck-amd64-linux)
+==32332==    by 0x5804CFD8: ??? (in /usr/libexec/valgrind/memcheck-amd64-linux)
+==32332==    by 0x5803B63A: ??? (in /usr/libexec/valgrind/memcheck-amd64-linux)
+==32332==    by 0x58039DAE: ??? (in /usr/libexec/valgrind/memcheck-amd64-linux)
+==32332==    by 0x5803E66D: ??? (in /usr/libexec/valgrind/memcheck-amd64-linux)
+==32332==    by 0x58039058: ??? (in /usr/libexec/valgrind/memcheck-amd64-linux)
+==32332==    by 0x5800F233: ??? (in /usr/libexec/valgrind/memcheck-amd64-linux)
+==32332==    by 0x1009428923: ???
+==32332==    by 0x100918DF2F: ???
+==32332==    by 0x100918DF17: ???
+==32332==    by 0x100918DF2F: ???
+==32332==    by 0x1C0F: ???
+==32332==    by 0x1008C8DC5F: ???
+==32332==    by 0x72FBA8E: (below main) (libc_start_call_main.h:58)
+
+sched status:
+  running_tid=1
+
+Thread 1: status = VgTs_Runnable (lwpid 32332)
+==32332==    at 0x484DA1F: memmove (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==32332==    by 0xEB6B4B5: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+==32332==    by 0xE79A3CE: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+==32332==    by 0xE79AAF4: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+==32332==    by 0xE79FAD1: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+==32332==    by 0x10CF7F: render_particles (particles_gl.c:62)
+==32332==    by 0x127CFC: start_renderer (renderer.c:366)
+==32332==    by 0x10BCB9: main (fluid.c:63)
+client stack range: [0x1FFEFDD000 0x1FFF000FFF] client SP: 0x1FFEFFE638
+valgrind stack range: [0x100908E000 0x100918DFFF] top usage: 19032 of 1048576
+
+Thread 2: status = VgTs_WaitSys syscall 232 (lwpid 32341)
+==32332==    at 0x73F64F6: epoll_wait (epoll_wait.c:30)
+==32332==    by 0x78ECF14: ucs_event_set_wait (in /usr/lib/x86_64-linux-gnu/libucs.so.0.0.0)
+==32332==    by 0x78D81A9: ??? (in /usr/lib/x86_64-linux-gnu/libucs.so.0.0.0)
+==32332==    by 0x73676B9: start_thread (pthread_create.c:444)
+==32332==    by 0x73F5FF3: clone (clone.S:100)
+client stack range: [0xC55E000 0xCD5CFFF] client SP: 0xCD5CCB0
+valgrind stack range: [0x100CA38000 0x100CB37FFF] top usage: 3528 of 1048576
+
+Thread 3: status = VgTs_WaitSys syscall 202 (lwpid 32344)
+==32332==    at 0x7363CA6: __futex_abstimed_wait_common64 (futex-internal.c:57)
+==32332==    by 0x7363CA6: __futex_abstimed_wait_common (futex-internal.c:87)
+==32332==    by 0x7363CA6: __futex_abstimed_wait_cancelable64 (futex-internal.c:139)
+==32332==    by 0x73665F7: __pthread_cond_wait_common (pthread_cond_wait.c:503)
+==32332==    by 0x73665F7: pthread_cond_wait@@GLIBC_2.3.2 (pthread_cond_wait.c:627)
+==32332==    by 0xE624F8C: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+==32332==    by 0xE5D539A: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+==32332==    by 0xE624EBA: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+==32332==    by 0x73676B9: start_thread (pthread_create.c:444)
+==32332==    by 0x73F5FF3: clone (clone.S:100)
+client stack range: [0x17734000 0x17F32FFF] client SP: 0x17F32C60
+valgrind stack range: [0x1010796000 0x1010895FFF] top usage: 3608 of 1048576
+
+Thread 4: status = VgTs_WaitSys syscall 202 (lwpid 32345)
+==32332==    at 0x7363CA6: __futex_abstimed_wait_common64 (futex-internal.c:57)
+==32332==    by 0x7363CA6: __futex_abstimed_wait_common (futex-internal.c:87)
+==32332==    by 0x7363CA6: __futex_abstimed_wait_cancelable64 (futex-internal.c:139)
+==32332==    by 0x73665F7: __pthread_cond_wait_common (pthread_cond_wait.c:503)
+==32332==    by 0x73665F7: pthread_cond_wait@@GLIBC_2.3.2 (pthread_cond_wait.c:627)
+==32332==    by 0xE624F8C: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+==32332==    by 0xE5D539A: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+==32332==    by 0xE624EBA: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+==32332==    by 0x73676B9: start_thread (pthread_create.c:444)
+==32332==    by 0x73F5FF3: clone (clone.S:100)
+client stack range: [0x17F35000 0x18733FFF] client SP: 0x18733C60
+valgrind stack range: [0x1010A9A000 0x1010B99FFF] top usage: 3224 of 1048576
+
+Thread 5: status = VgTs_WaitSys syscall 202 (lwpid 32346)
+==32332==    at 0x7363CA6: __futex_abstimed_wait_common64 (futex-internal.c:57)
+==32332==    by 0x7363CA6: __futex_abstimed_wait_common (futex-internal.c:87)
+==32332==    by 0x7363CA6: __futex_abstimed_wait_cancelable64 (futex-internal.c:139)
+==32332==    by 0x73665F7: __pthread_cond_wait_common (pthread_cond_wait.c:503)
+==32332==    by 0x73665F7: pthread_cond_wait@@GLIBC_2.3.2 (pthread_cond_wait.c:627)
+==32332==    by 0xE624F8C: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+==32332==    by 0xE5D539A: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+==32332==    by 0xE624EBA: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+==32332==    by 0x73676B9: start_thread (pthread_create.c:444)
+==32332==    by 0x73F5FF3: clone (clone.S:100)
+client stack range: [0x18736000 0x18F34FFF] client SP: 0x18F34C60
+valgrind stack range: [0x1010D9E000 0x1010E9DFFF] top usage: 3440 of 1048576
+
+Thread 6: status = VgTs_WaitSys syscall 202 (lwpid 32347)
+==32332==    at 0x7363CA6: __futex_abstimed_wait_common64 (futex-internal.c:57)
+==32332==    by 0x7363CA6: __futex_abstimed_wait_common (futex-internal.c:87)
+==32332==    by 0x7363CA6: __futex_abstimed_wait_cancelable64 (futex-internal.c:139)
+==32332==    by 0x73665F7: __pthread_cond_wait_common (pthread_cond_wait.c:503)
+==32332==    by 0x73665F7: pthread_cond_wait@@GLIBC_2.3.2 (pthread_cond_wait.c:627)
+==32332==    by 0xE624F8C: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+==32332==    by 0xE5D539A: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+==32332==    by 0xE624EBA: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+==32332==    by 0x73676B9: start_thread (pthread_create.c:444)
+==32332==    by 0x73F5FF3: clone (clone.S:100)
+client stack range: [0x18F37000 0x19735FFF] client SP: 0x19735C60
+valgrind stack range: [0x10110A2000 0x10111A1FFF] top usage: 3224 of 1048576
+
+Thread 7: status = VgTs_WaitSys syscall 202 (lwpid 32348)
+==32332==    at 0x7363CA6: __futex_abstimed_wait_common64 (futex-internal.c:57)
+==32332==    by 0x7363CA6: __futex_abstimed_wait_common (futex-internal.c:87)
+==32332==    by 0x7363CA6: __futex_abstimed_wait_cancelable64 (futex-internal.c:139)
+==32332==    by 0x73665F7: __pthread_cond_wait_common (pthread_cond_wait.c:503)
+==32332==    by 0x73665F7: pthread_cond_wait@@GLIBC_2.3.2 (pthread_cond_wait.c:627)
+==32332==    by 0xE624F8C: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+==32332==    by 0xE5D539A: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+==32332==    by 0xE624EBA: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+==32332==    by 0x73676B9: start_thread (pthread_create.c:444)
+==32332==    by 0x73F5FF3: clone (clone.S:100)
+client stack range: [0x19738000 0x19F36FFF] client SP: 0x19F36C60
+valgrind stack range: [0x10113A6000 0x10114A5FFF] top usage: 3224 of 1048576
+
+Thread 8: status = VgTs_WaitSys syscall 202 (lwpid 32349)
+==32332==    at 0x7363CA6: __futex_abstimed_wait_common64 (futex-internal.c:57)
+==32332==    by 0x7363CA6: __futex_abstimed_wait_common (futex-internal.c:87)
+==32332==    by 0x7363CA6: __futex_abstimed_wait_cancelable64 (futex-internal.c:139)
+==32332==    by 0x73665F7: __pthread_cond_wait_common (pthread_cond_wait.c:503)
+==32332==    by 0x73665F7: pthread_cond_wait@@GLIBC_2.3.2 (pthread_cond_wait.c:627)
+==32332==    by 0xE624F8C: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+==32332==    by 0xE5D539A: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+==32332==    by 0xE624EBA: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+==32332==    by 0x73676B9: start_thread (pthread_create.c:444)
+==32332==    by 0x73F5FF3: clone (clone.S:100)
+client stack range: [0x19F39000 0x1A737FFF] client SP: 0x1A737C60
+valgrind stack range: [0x10116AA000 0x10117A9FFF] top usage: 3224 of 1048576
+
+Thread 9: status = VgTs_WaitSys syscall 202 (lwpid 32350)
+==32332==    at 0x7363CA6: __futex_abstimed_wait_common64 (futex-internal.c:57)
+==32332==    by 0x7363CA6: __futex_abstimed_wait_common (futex-internal.c:87)
+==32332==    by 0x7363CA6: __futex_abstimed_wait_cancelable64 (futex-internal.c:139)
+==32332==    by 0x73665F7: __pthread_cond_wait_common (pthread_cond_wait.c:503)
+==32332==    by 0x73665F7: pthread_cond_wait@@GLIBC_2.3.2 (pthread_cond_wait.c:627)
+==32332==    by 0xE624F8C: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+==32332==    by 0xE5D539A: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+==32332==    by 0xE624EBA: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+==32332==    by 0x73676B9: start_thread (pthread_create.c:444)
+==32332==    by 0x73F5FF3: clone (clone.S:100)
+client stack range: [0x1A73A000 0x1AF38FFF] client SP: 0x1AF38C60
+valgrind stack range: [0x10119AE000 0x1011AADFFF] top usage: 3224 of 1048576
+
+Thread 10: status = VgTs_WaitSys syscall 202 (lwpid 32351)
+==32332==    at 0x7363CA6: __futex_abstimed_wait_common64 (futex-internal.c:57)
+==32332==    by 0x7363CA6: __futex_abstimed_wait_common (futex-internal.c:87)
+==32332==    by 0x7363CA6: __futex_abstimed_wait_cancelable64 (futex-internal.c:139)
+==32332==    by 0x73665F7: __pthread_cond_wait_common (pthread_cond_wait.c:503)
+==32332==    by 0x73665F7: pthread_cond_wait@@GLIBC_2.3.2 (pthread_cond_wait.c:627)
+==32332==    by 0xE624F8C: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+==32332==    by 0xE5D539A: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+==32332==    by 0xE624EBA: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+==32332==    by 0x73676B9: start_thread (pthread_create.c:444)
+==32332==    by 0x73F5FF3: clone (clone.S:100)
+client stack range: [0x1AF4B000 0x1B749FFF] client SP: 0x1B749C60
+valgrind stack range: [0x1011CDE000 0x1011DDDFFF] top usage: 3248 of 1048576
+
+Thread 11: status = VgTs_WaitSys syscall 202 (lwpid 32352)
+==32332==    at 0x7363CA6: __futex_abstimed_wait_common64 (futex-internal.c:57)
+==32332==    by 0x7363CA6: __futex_abstimed_wait_common (futex-internal.c:87)
+==32332==    by 0x7363CA6: __futex_abstimed_wait_cancelable64 (futex-internal.c:139)
+==32332==    by 0x73665F7: __pthread_cond_wait_common (pthread_cond_wait.c:503)
+==32332==    by 0x73665F7: pthread_cond_wait@@GLIBC_2.3.2 (pthread_cond_wait.c:627)
+==32332==    by 0xE624F8C: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+==32332==    by 0xE5D539A: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+==32332==    by 0xE624EBA: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+==32332==    by 0x73676B9: start_thread (pthread_create.c:444)
+==32332==    by 0x73F5FF3: clone (clone.S:100)
+client stack range: [0x1B76C000 0x1BF6AFFF] client SP: 0x1BF6AC60
+valgrind stack range: [0x1011FEE000 0x10120EDFFF] top usage: 3224 of 1048576
+
+
+Note: see also the FAQ in the source distribution.
+It contains workarounds to several common problems.
+In particular, if Valgrind aborted or crashed after
+identifying problems in your program, there's a good chance
+that fixing those problems will prevent Valgrind aborting or
+crashing, especially if it happened in m_mallocfree.c.
+
+If that doesn't help, please report this bug to: www.valgrind.org
+
+In the bug report, send all the above text, the valgrind
+version, and what OS and version you are using.  Thanks.
+
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 32333 RUNNING AT thetrick-linux
+=   EXIT CODE: 9
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+YOUR APPLICATION TERMINATED WITH THE EXIT STRING: Killed (signal 9)
+This typically refers to a problem with your application.
+Please see the FAQ page for debugging suggestions
 thetrick@thetrick-linux:~/3050/SPH$ 
 

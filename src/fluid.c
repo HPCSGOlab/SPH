@@ -818,10 +818,21 @@ void add_points(fluid_particle **fluid_particle_pointers, fluid_particle *fluid_
             fluid_particle *n;
 
             int last_fp = params->number_fluid_particles_local;
+
+            int new_last_hp = last_fp + params->number_halo_particles + params->tunable_params.count_change + 1;
+            int new_last_fp = last_fp + params->tunable_params.count_change + 1;
+
+            for (int k = new_last_hp; k > new_last_fp; k--){ //move halo pointers
+
+                fluid_particle_pointers[k] = fluid_particle_pointers[k - params->tunable_params.count_change];
+                fluid_particle_pointers[k]->id = k;
+                //printf("setting pointer %d \n",k);
+
+            }
             
             for(int i=0; i<params->tunable_params.count_change; i++)
             {
-                pointer_index = last_fp + params->number_halo_particles + i + 1;
+                pointer_index = last_fp  + i ;
                 //printf("pointer_index %d \n",pointer_index) ;
 
                 n = &fluid_particles[pointer_index];
