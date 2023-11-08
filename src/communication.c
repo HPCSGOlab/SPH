@@ -373,6 +373,8 @@ void transferOOBParticles(fluid_particle **fluid_particle_pointers, fluid_partic
         out_of_bounds->number_vacancies -= total_received;
     else
         out_of_bounds->number_vacancies = 0;
+        
+    out_of_bounds->number_vacancies = 0;    
 
     // Update vacancy indicies and total for particles sent
     // Set sent particle pointer to received particle location or to NULL
@@ -414,7 +416,7 @@ void transferOOBParticles(fluid_particle **fluid_particle_pointers, fluid_partic
             fluid_particle_pointers[oob_pointer_index] = NULL;
     }
 
-    debug_print("rank %d OOB: num vacant %d\n", rank, out_of_bounds->number_vacancies);
+    //printf("rank %d OOB: num vacant %d\n", rank, out_of_bounds->number_vacancies);
 
     // If more particles are received than sent add to end of pointer array
     remaining = total_received - recv_replaced;

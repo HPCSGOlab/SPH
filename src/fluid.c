@@ -272,24 +272,29 @@ void start_simulation()
 
     int sub_step = 0; // substep range from 0 to < steps_per_frame
 
-    float scale_factor = .5f;
+    float scale_factor = .1f;
 
     bool resize = true;
 
    
-    int goal_local_particles = (params.number_fluid_particles_global/nprocs) * scale_factor;
+    //int goal_local_particles = (params.number_fluid_particles_global/nprocs) * scale_factor;
+    int goal_local_particles = 30;
     int particles_local_max = (params.number_fluid_particles_global/nprocs) * .95f;
 
-    //params.number_fluid_particles_local = goal_local_particles;
+    params.number_fluid_particles_local = goal_local_particles;
+    
+    params.max_fluid_particle_index = goal_local_particles - 1;
 
     printf(" Main Sim Loop start for node at:%d with fp:%d gs: %f \n" , rank, params.number_fluid_particles_local, neighbor_grid.spacing);
 
     // Main simulation loop
     while(1) {
 
-        add_points(fluid_particle_pointers, fluid_particles, &params, particles_local_max, &boundary_global);
+        //add_points(fluid_particle_pointers, fluid_particles, &params, particles_local_max, &boundary_global);
+        //printf("rank %d, prams->max_fp:  %d prams->nfp_local: %d\n", rank,  params.max_fluid_particle_index, params.number_fluid_particles_local);
         
-        //check_points(fluid_particle_pointers, &params);
+
+        
 
         // Initialize velocities
         apply_gravity(fluid_particle_pointers, &params);
@@ -328,6 +333,8 @@ void start_simulation()
         
         // Identify out of bounds particles and send them to appropriate rank
         identify_oob_particles(fluid_particle_pointers, fluid_particles, &out_of_bounds, &boundary_global, &params);
+
+        
 
         // Hash the non halo regions
         // This will update the densities so when the halo is exchanged the halo particles are up to date
@@ -385,6 +392,17 @@ void start_simulation()
             
 
         }
+
+        
+
+        add_points(fluid_particle_pointers, fluid_particles, &params, particles_local_max, &boundary_global);
+
+
+
+        if (rank == 0) {
+            printf("local: %d max:%d\n",params.number_fluid_particles_local,params.max_fluid_particle_index);
+            //check_points(fluid_particle_pointers, &params);
+        } 
   
 
 
@@ -801,6 +819,37 @@ void check_points(fluid_particle **fluid_particle_pointers, param *params)
             continue;
         } 
 
+   printf(
+            "p->x = %.2f; "
+            "p->y = %.2f; "
+            "p->x_prev = %.2f; "
+            "p->y_prev = %.2f; "
+            "p->v_x = %.2f; "
+            "p->v_y = %.2f; "
+            "p->a_x = %.2f; "
+            "p->a_y = %.2f; "
+            "p->den = %.2f; "
+            "p->den_n = %.2f; "
+            "p->pres = %.2f; "
+            "p->pres_n = %.2f; "
+            "p->id = %d;\n",
+            p->x,
+            p->y,
+            p->x_prev, 
+            p->y_prev, 
+            p->v_x, 
+            p->v_y, 
+            p->a_x, 
+            p->a_y, 
+            p->density, 
+            p->density_near, 
+            p->pressure, 
+            p->pressure_near, 
+            p->id);
+
+
+
+
         if (p->x < 0 || p->x > 15){
             printf(" bad x: %f p loc at:%d ",p->x ,i );
         }   
@@ -817,18 +866,18 @@ void add_points(fluid_particle **fluid_particle_pointers, fluid_particle *fluid_
             int pointer_index;
             fluid_particle *n;
 
-            int last_fp = params->number_fluid_particles_local;
+            int last_fp = params->number_fluid_particles_local - 1;
 
-            int new_last_hp = last_fp + params->number_halo_particles + params->tunable_params.count_change + 1;
-            int new_last_fp = last_fp + params->tunable_params.count_change + 1;
+            //int new_last_hp = last_fp + params->number_halo_particles + params->tunable_params.count_change ;
+            //int new_last_fp = last_fp + params->tunable_params.count_change ;
 
-            for (int k = new_last_hp; k > new_last_fp; k--){ //move halo pointers
+            // for (int k = new_last_hp; k > new_last_fp; k--){ //move halo pointers
 
-                fluid_particle_pointers[k] = fluid_particle_pointers[k - params->tunable_params.count_change];
-                fluid_particle_pointers[k]->id = k;
-                //printf("setting pointer %d \n",k);
+            //     fluid_particle_pointers[k] = fluid_particle_pointers[k - params->tunable_params.count_change];
+            //     fluid_particle_pointers[k]->id = k;
+            //     //printf("setting pointer %d \n",k);
 
-            }
+            // }
             
             for(int i=0; i<params->tunable_params.count_change; i++)
             {
@@ -844,8 +893,8 @@ void add_points(fluid_particle **fluid_particle_pointers, fluid_particle *fluid_
                 n->y_prev = 0;
                 n->v_x = 0.0f;
                 n->v_y = 0.0f;
-                n->a_x = 0.0f;
-                n->a_y = 0.0f;
+                n->a_x = i/100;
+                n->a_y = i/100;
                 n->density = 0.0f;
                 n->density_near = 0.0f;
                 n->pressure = 0.0f;
@@ -854,16 +903,31 @@ void add_points(fluid_particle **fluid_particle_pointers, fluid_particle *fluid_
 
                 fluid_particle_pointers[pointer_index] = n; 
 
-                params->number_fluid_particles_local++;
+                //params->number_fluid_particles_local++;
             }
-            params->max_fluid_particle_index = pointer_index;
+            //params->max_fluid_particle_index = pointer_index;
+            
+            params->number_fluid_particles_local = params->number_fluid_particles_local + params->tunable_params.count_change;
+            int new_max = params->number_fluid_particles_local + params->number_halo_particles ;
+            if (new_max > params->max_fluid_particle_index){
+                params->max_fluid_particle_index = new_max;
+            }
 
         }  else {
             params->number_fluid_particles_local += params->tunable_params.count_change;
             if (params->number_fluid_particles_local < 0){
                 params->number_fluid_particles_local = 0;
             }
-        }      
+        } 
+
+        for(int i=0; i<params->number_fluid_particles_local; i++)
+        {
+            fluid_particle_pointers[i] = &fluid_particles[i];
+            fluid_particle_pointers[i]->id = i;
+        }     
     }
+
+
+    
     params->tunable_params.count_change = 0;
 }

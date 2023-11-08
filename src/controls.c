@@ -89,14 +89,14 @@ void decrease_parameter(render_t *render_state)
 void increase_points(render_t *render_state)
 {
     //TDH
-    render_state->master_params[0].count_change = 100;
+    render_state->master_params[0].count_change = 10;
 
 }
 
 void decrease_points(render_t *render_state)
 {
     //TDH
-    render_state->master_params[0].count_change = -100;
+    render_state->master_params[0].count_change = -10;
 
 }
 
