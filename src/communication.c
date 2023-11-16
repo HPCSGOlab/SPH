@@ -374,7 +374,7 @@ void transferOOBParticles(fluid_particle **fluid_particle_pointers, fluid_partic
     else
         out_of_bounds->number_vacancies = 0;
         
-    out_of_bounds->number_vacancies = 0;    
+    //out_of_bounds->number_vacancies = 0;    
 
     // Update vacancy indicies and total for particles sent
     // Set sent particle pointer to received particle location or to NULL
