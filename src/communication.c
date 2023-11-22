@@ -284,181 +284,129 @@ void transferOOBParticles(fluid_particle **fluid_particle_pointers, fluid_partic
     tag = 8278;
     MPI_Sendrecv(&num_moving_left, 1, MPI_INT, proc_to_left, tag, &num_from_right,1,MPI_INT,proc_to_right,tag,MPI_COMM_COMPUTE,MPI_STATUS_IGNORE);
 
-    // Create indexed type to send
-    MPI_Datatype LeftMovetype;
-    MPI_Datatype RightMovetype;
-    int *blocklens_left = malloc(num_moving_left*sizeof(int)*2);
-    int *blocklens_right = malloc(num_moving_right*sizeof(int)*2);
-    int *indicies_left = malloc(num_moving_left*sizeof(int)*2);
-    int *indicies_right = malloc(num_moving_right*sizeof(int)*2);
+    printf("rank %d net change %d \n",rank,((num_from_left + num_from_right) - (num_moving_left + num_moving_right)));
 
-    // Convert the OOB pointer into a particle array index using pointer arithmetic
+    int net_change = (num_from_left + num_from_right) - (num_moving_left + num_moving_right);
+
+    fluid_particle *fluid_particles_from_right = malloc(num_from_right * sizeof(fluid_particle));
+    fluid_particle *fluid_particles_from_left = malloc(num_from_left * sizeof(fluid_particle));
+
+    fluid_particle *fluid_particles_to_right = malloc(num_moving_right * sizeof(fluid_particle));
+    fluid_particle *fluid_particles_to_left = malloc(num_moving_left * sizeof(fluid_particle));
+
+    // load up left and right out bound particle arrays
     int index;
-    int oob_global_index;
-    for (i=0; i<num_moving_left; i++) {
-        blocklens_left[i] = 1;
+    for (i = 0; i < num_moving_left; i++) {
         index = out_of_bounds->oob_pointer_indicies_left[i];
-        oob_global_index = (int) (fluid_particle_pointers[index] - fluid_particles);
-        indicies_left[i]  = oob_global_index;
+        fluid_particles_to_left[i] = *fluid_particle_pointers[index];
     }
-    for (i=0; i<num_moving_right; i++) {
-        blocklens_right[i] = 1;
+
+    for (i = 0; i < num_moving_right; i++) {
         index = out_of_bounds->oob_pointer_indicies_right[i];
-        oob_global_index = (int) (fluid_particle_pointers[index] - fluid_particles);
-        indicies_right[i]  = oob_global_index;
+        fluid_particles_to_right[i] = *fluid_particle_pointers[index];
     }
-
-    MPI_Type_indexed(num_moving_left,blocklens_left,indicies_left,Particletype,&LeftMovetype);
-    MPI_Type_commit(&LeftMovetype);
-    MPI_Type_indexed(num_moving_right,blocklens_right,indicies_right,Particletype,&RightMovetype);
-    MPI_Type_commit(&RightMovetype);
-
-    // Create indexed type to recv
-    MPI_Datatype LeftRecvtype;
-    MPI_Datatype RightRecvtype;
-
-    int total_recv = num_from_left + num_from_right;
-    int *blocklens_recv = malloc(total_recv*sizeof(int));
-    int *indicies_recv = malloc(total_recv*sizeof(int));
-    // Go through vacancies, starting at end, to create receive indicies
-    // Go through reverse so it's easy to set update vacancies below
-    for (i=0; i<out_of_bounds->number_vacancies && i<total_recv; i++) {
-        blocklens_recv[i] = 1;
-        index = out_of_bounds->number_vacancies-1-i;
-        indicies_recv[i] = out_of_bounds->vacant_indicies[index];
-    }
-    int replaced = i;
-    int remaining = total_recv - replaced;
-    for (i=0; i<remaining; i++) {
-        blocklens_recv[replaced+i] = 1;
-        indicies_recv[replaced+i] = params->max_fluid_particle_index + 1 + i;
-    }
-
-    MPI_Type_indexed(num_from_left, blocklens_recv, indicies_recv, Particletype, &LeftRecvtype);
-    MPI_Type_commit(&LeftRecvtype);
-    MPI_Type_indexed(num_from_right, &blocklens_recv[num_from_left],&indicies_recv[num_from_left], Particletype, &RightRecvtype);
-    MPI_Type_commit(&RightRecvtype); 
-
+    
     MPI_Status status;
-    MPI_Request request;
 
-    // Send oob particles to right processor receive oob particles from right processor
-    int num_received_left = 0;
-    int num_received_right = 0;
-
-    // Sending to right, recv from left
+    // Sending to right, receive from left
     tag = 2522;
-    MPI_Sendrecv(fluid_particles,1,RightMovetype,proc_to_right,tag,fluid_particles,1,LeftRecvtype,proc_to_left,tag,MPI_COMM_COMPUTE,&status);
-    MPI_Get_count(&status, Particletype, &num_received_left);
-    // Sending to left, recv from right
+    MPI_Sendrecv(fluid_particles_to_right, num_moving_right, Particletype, proc_to_right, tag, 
+                fluid_particles_from_left, num_from_left, Particletype, proc_to_left, tag, MPI_COMM_COMPUTE, &status);
+
+    // Sending to left, receive from right
     tag = 1165;
-    MPI_Sendrecv(fluid_particles,1,LeftMovetype,proc_to_left,tag,fluid_particles,1,RightRecvtype,proc_to_right,tag,MPI_COMM_COMPUTE,&status);
-    MPI_Get_count(&status, Particletype, &num_received_right);
+    MPI_Sendrecv(fluid_particles_to_left, num_moving_left, Particletype, proc_to_left, tag, 
+                fluid_particles_from_right, num_from_right, Particletype, proc_to_right, tag,  MPI_COMM_COMPUTE, &status);
 
-    int total_sent = num_moving_left + num_moving_right;
-    int total_received = num_received_right + num_received_left;
-
-    debug_print("rank %d OOB: sent left %d, right: %d recv left:%d, right: %d\n", rank, num_moving_left, num_moving_right, num_received_left, num_received_right);
-
-    // Update maximum particle index if neccessary
-    int max_received_index = total_received?total_received-1:0;// If non received don't access indicies_recv[-1]...
-    if (total_received && indicies_recv[max_received_index] > params->max_fluid_particle_index) {
-        debug_print("rank %d increasing max index from: %d", rank, params->max_fluid_particle_index);
-        params->max_fluid_particle_index = indicies_recv[max_received_index];
-        debug_print("to %d\n", params->max_fluid_particle_index);
+   
+    if ((params->number_fluid_particles_local + net_change) > params->max_fluid_particle_index){
+        params->max_fluid_particle_index = params->number_fluid_particles_local + net_change;
     }
 
-    // Update vacancy total for particles received
-    if (total_received < out_of_bounds->number_vacancies )
-        out_of_bounds->number_vacancies -= total_received;
-    else
-        out_of_bounds->number_vacancies = 0;
-        
-    //out_of_bounds->number_vacancies = 0;    
-
-    // Update vacancy indicies and total for particles sent
-    // Set sent particle pointer to received particle location or to NULL
-    int oob_pointer_index;
-    int recv_replaced = 0; // received particles that have replaced leaving particles
-    for (i=0; i<num_moving_left; i++) {
-        // Index of particle pointer that has left
-        oob_pointer_index = out_of_bounds->oob_pointer_indicies_left[i];
-        // Index of particle that has left
-        oob_global_index = (int) (fluid_particle_pointers[oob_pointer_index] - fluid_particles);
-        out_of_bounds->vacant_indicies[out_of_bounds->number_vacancies] = oob_global_index;
-        // Incriment the number of vacancies
-        out_of_bounds->number_vacancies++;
-
-        // Set pointer from removed particle to a recvd particle ,if any, else NULL
-        if(recv_replaced < total_received) {
-            fluid_particle_pointers[oob_pointer_index] = &fluid_particles[indicies_recv[recv_replaced]]; 
-            recv_replaced++;
+    int max_index = params->number_fluid_particles_local;
+    
+    // Reintegrate received particles from left 
+    for (i = 0; i < num_from_left; i++) {
+        int t_index;
+        if (i < num_moving_left) {
+           // printf("V");
+            t_index = out_of_bounds->oob_pointer_indicies_left[i];
+        } else { // Handle excess 
+            printf("rank M %d \n",rank);
+            max_index++;
+            t_index = max_index;
         }
-        else
-            fluid_particle_pointers[oob_pointer_index] = NULL;
-    }
-    for (i=0; i<num_moving_right; i++) {
-        // Index of particle pointer that has left
-        oob_pointer_index = out_of_bounds->oob_pointer_indicies_right[i];
-        // Index of particle that has left
-        oob_global_index = (int) (fluid_particle_pointers[oob_pointer_index] - fluid_particles);
-        // Set new vacancy index
-        out_of_bounds->vacant_indicies[out_of_bounds->number_vacancies] = oob_global_index;
-        // Incriment the number of vacancies
-        out_of_bounds->number_vacancies++;
+        //printf("from left index %d \n",t_index);
 
-        // Set pointer from removed particle to a recvd particle ,if any, else NULL
-        if(recv_replaced < total_received) {
-            fluid_particle_pointers[oob_pointer_index] = &fluid_particles[indicies_recv[recv_replaced]];
-            recv_replaced++;
+        fluid_particles[t_index] = fluid_particles_from_left[i];
+        fluid_particle_pointers[t_index] = &fluid_particles[t_index];
+        //fluid_particle_pointers[t_index] = &fluid_particles_from_left[i];
+    }
+
+    //printf("*************\n");
+
+    // Reintegrate received particles from right 
+    for (i = 0; i < num_from_right; i++) {
+        int t_index;
+        if (i < num_moving_right) {
+            //printf("V");
+            t_index = out_of_bounds->oob_pointer_indicies_right[i];
+        } else { // Handle excess 
+            printf("rank M %d \n",rank);
+            max_index++;
+            t_index = max_index;
         }
-        else
-            fluid_particle_pointers[oob_pointer_index] = NULL;
+        //printf("from right index %d \n",t_index);
+        fluid_particles[t_index] = fluid_particles_from_right[i];
+        fluid_particle_pointers[t_index] = &fluid_particles[t_index];
+        //fluid_particle_pointers[t_index] = &fluid_particles_from_right[i];
     }
 
-    //printf("rank %d OOB: num vacant %d\n", rank, out_of_bounds->number_vacancies);
+   // printf("*************\n");
 
-    // If more particles are received than sent add to end of pointer array
-    remaining = total_received - recv_replaced;
-    int pointer_index;
-    int global_index;
-    int max_fluid_pointers = params->number_fluid_particles_local;
-    for(i=0; i<remaining; i++)
-    {
-        pointer_index = params->number_fluid_particles_local + i;
-        global_index = indicies_recv[recv_replaced + i];
-        fluid_particle_pointers[pointer_index] = &fluid_particles[global_index];
-        max_fluid_pointers++;
+    // Update the max index
+    params->max_fluid_particle_index = max_index;
+
+    printf("rank %d OOB: sent left %d, right: %d recv left:%d, right: %d \n", rank, num_moving_left, num_moving_right, num_from_left, num_from_right);
+ 
+    //int max_fluid_pointers = params->number_fluid_particles_local;
+    // for(i=0; i<remaining; i++)
+
+    for (i = num_from_left; i < num_moving_left; i++) {
+        index = out_of_bounds->oob_pointer_indicies_left[i];
+        fluid_particle_pointers[index] = NULL;
+        //printf("nullL\n");
     }
 
-    // Update particle pointer array
-    // Go through all possible fluid particles and remove null entries
+
+    for (i = num_from_right; i < num_moving_right; i++) {
+        index = out_of_bounds->oob_pointer_indicies_right[i];
+        fluid_particle_pointers[index] = NULL;
+        //printf("nullR\n");
+    }
+
     int num_particles = 0;
-    for (i=0; i<max_fluid_pointers; i++) {
+    for (i=0; i<params->max_fluid_particle_index; i++) {
         p = fluid_particle_pointers[i];
         if (p != NULL) {
             fluid_particle_pointers[num_particles] = p;
             fluid_particle_pointers[num_particles]->id = num_particles;
             num_particles++;
+        }else{
+            //printf("Particle Removed \n");
         }
     }
 
-    params->number_fluid_particles_local = num_particles;
+    params->number_fluid_particles_local += net_change;
 
     // Need to add rank to debug_print
-    debug_print("num local: %d\n", num_particles);
+    printf("num local: %d \n", num_particles);
 
-    // Free indexed types
-    MPI_Type_free(&LeftRecvtype);
-    MPI_Type_free(&RightRecvtype);
-    MPI_Type_free(&LeftMovetype);
-    MPI_Type_free(&RightMovetype);
 
-    free(blocklens_left);
-    free(blocklens_right);
-    free(indicies_left);
-    free(indicies_right);
-    free(blocklens_recv);
-    free(indicies_recv);
+
+    free(fluid_particles_from_right );
+    free(fluid_particles_from_left );
+    free(fluid_particles_to_right );
+    free(fluid_particles_to_left );
 }
 

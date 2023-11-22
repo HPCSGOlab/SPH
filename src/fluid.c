@@ -404,7 +404,7 @@ void start_simulation()
 
         if (rank == 3) {
             //printf("rank: %d local: %d max:%d\n",rank, params.number_fluid_particles_local,params.max_fluid_particle_index);
-            check_points(fluid_particle_pointers, &params);
+            //check_points(fluid_particle_pointers, &params);
         } 
   
 
